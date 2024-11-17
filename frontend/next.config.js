@@ -3,9 +3,9 @@ module.exports = {
     images: {
       remotePatterns: [
         {
-          protocol: 'http',
-          hostname: 'localhost',
-          port: '5000',
+          protocol: 'https',
+          hostname: 'ai-powered-ecomerce.onrender.com',
+          port: '',
           pathname: '/images/**',
         },
       ],
