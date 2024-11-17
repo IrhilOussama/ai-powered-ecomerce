@@ -1,0 +1,1127 @@
+/* Base styles */
+.pageWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.main {
+  flex: 1;
+}
+
+/* Header Styles */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* Top Bar */
+.topBar {
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 13px;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.topBar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topBarLeft, .topBarRight {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.topBarLink {
+  color: #fff;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.topBarLink:hover {
+  opacity: 1;
+  color: #007bff;
+}
+
+/* Main Header */
+.mainHeader {
+  padding: 20px 0;
+  background: white;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.mainHeader .container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo {
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo h1 {
+  font-size: 24px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #007bff, #00bcd4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+.searchWrapper {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  background: #f8f9fa;
+  border-radius: 30px;
+  padding: 5px;
+  border: 2px solid transparent;
+}
+
+.searchWrapper:focus-within {
+  border-color: #007bff;
+  box-shadow: 0 0 0 4px rgba(0,123,255,0.1);
+}
+
+.categorySelect {
+  padding: 0 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+}
+
+.searchInputWrapper {
+  flex: 1;
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.searchButton {
+  padding: 0 20px;
+  background: linear-gradient(45deg, #007bff, #00bcd4);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border-radius: 25px;
+}
+
+.searchButton:hover {
+  transform: translateX(3px);
+}
+
+.headerActions {
+  display: flex;
+  gap: 20px;
+}
+
+.actionButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.cartWrapper {
+  position: relative;
+}
+
+.cartCount {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #007bff;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+/* Navigation */
+.mainNav {
+  background: white;
+  border-top: 1px solid #eee;
+  padding: 15px 0;
+  background: white;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.mainNav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navLinks ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s;
+  position: relative;
+  padding: 8px 0;
+}
+
+.navLinks a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(45deg, #007bff, #00bcd4);
+  transition: width 0.3s ease;
+}
+
+.navLinks a:hover,
+.navLinks a.active {
+  color: #007bff;
+}
+
+.navLinks a:hover::after {
+  width: 100%;
+}
+
+.mobileMenuButton {
+  display: none;
+}
+
+/* Footer Styles */
+.footer {
+  background: #f8f9fa;
+  margin-top: auto;
+}
+
+/* Newsletter Section */
+.newsletterSection {
+  background: linear-gradient(45deg, #007bff, #00bcd4);
+  padding: 60px 0;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletterSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/pattern.png');
+  opacity: 0.1;
+}
+
+.newsletterContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.newsletterText h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.newsletterText p {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.newsletterForm {
+  flex: 1;
+  max-width: 500px;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 10px;
+  background: white;
+  padding: 5px;
+  border-radius: 8px;
+  background: white;
+  border-radius: 30px;
+  padding: 5px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.inputGroup input {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  border-radius: 25px;
+  padding: 15px 25px;
+}
+
+.inputGroup button {
+  padding: 12px 30px;
+  background: linear-gradient(45deg, #007bff, #00bcd4);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: transform 0.3s ease;
+  border-radius: 25px;
+  padding: 15px 30px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.inputGroup button:hover {
+  transform: translateX(3px);
+}
+
+/* Main Footer */
+.mainFooter {
+  padding: 60px 0;
+  background: white;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 60px;
+}
+
+.footerColumn h3 {
+  font-size: 18px;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+
+.footerLogo h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.companyDesc {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #666;
+  padding: 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.contactItem:hover {
+  background: #f8f9fa;
+  transform: translateX(5px);
+}
+
+.contactItem svg {
+  color: #007bff;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.contactItem:hover svg {
+  transform: scale(1.2);
+}
+
+/* Sub Footer Styles */
+.subFooter {
+  background: #f1f1f1;  /* Lighter background to distinguish from main footer */
+  padding: 20px 0;
+  border-top: 1px solid #e0e0e0;
+}
+
+.subFooterContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.subFooterContent p {
+  color: #666;
+  font-size: 14px;
+}
+
+.paymentMethods {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.paymentMethods img {
+  height: 30px;
+  width: auto;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.paymentMethods img:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .searchWrapper {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainHeader .container {
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    flex: 1;
+  }
+
+  .searchWrapper {
+    order: 3;
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .mobileMenuButton {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .navLinks.active {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .navLinks ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .topBar .container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .headerActions span {
+    display: none;
+  }
+}
+
+/* Responsive Design for Sub Footer */
+@media (max-width: 768px) {
+  .subFooterContent {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .paymentMethods {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .paymentMethods {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .paymentMethods img {
+    height: 25px;
+  }
+}
+
+/* App Download and Social Links Styles */
+.footerColumn h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.appText {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.appButtons {
+  margin-bottom: 25px;
+}
+
+.appButton {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.appButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #007bff, #00bcd4);
+  opacity: 0.1;
+  transition: opacity 0.3s ease;
+}
+
+.appButton:hover {
+  transform: translateY(-3px);
+}
+
+.appButton:hover::before {
+  opacity: 0.2;
+}
+
+.playStoreImage {
+  height: 52px;  /* Adjusted height */
+  width: auto;
+  object-fit: contain;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.socialLink {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #007bff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.socialLink:hover {
+  background: linear-gradient(45deg, #007bff, #00bcd4);
+  color: white;
+  transform: translateY(-3px) rotate(8deg);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .footerColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .appButtons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .socialLinks {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .playStoreImage {
+    height: 45px;
+  }
+
+  .socialLinks {
+    gap: 10px;
+  }
+
+  .socialLink {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+}
+
+.customAppButton {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #000;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.customAppButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.playIcon {
+  font-size: 24px;
+}
+
+.buttonText {
+  display: flex;
+  flex-direction: column;
+}
+
+.getIt {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+.storeName {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Responsive Footer Styles */
+@media (max-width: 768px) {
+  /* Newsletter Section */
+  .newsletterSection {
+    padding: 30px 20px;
+  }
+
+  .newsletterContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .newsletterForm {
+    width: 100%;
+  }
+
+  .inputGroup {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .inputGroup input,
+  .inputGroup button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  /* Main Footer */
+  .footerGrid {
+    grid-template-columns: 1fr;  /* Stack columns on mobile */
+    gap: 30px;
+    padding: 0 20px;
+  }
+
+  .footerColumn {
+    text-align: center;
+  }
+
+  /* Company Info */
+  .companyDesc {
+    margin-bottom: 20px;
+  }
+
+  .contactInfo {
+    align-items: center;
+  }
+
+  .contactItem {
+    justify-content: center;
+  }
+
+  /* Quick Links */
+  .footerLinks {
+    align-items: center;
+  }
+
+  /* App Download Section */
+  .appButtons {
+    justify-content: center;
+  }
+
+  .socialLinks {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Sub Footer */
+  .subFooterContent {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .paymentMethods {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+/* Even smaller screens */
+@media (max-width: 480px) {
+  .newsletterSection {
+    padding: 20px 15px;
+  }
+
+  .newsletterText h3 {
+    font-size: 20px;
+  }
+
+  .newsletterText p {
+    font-size: 14px;
+  }
+
+  .footerColumn h3 {
+    font-size: 18px;
+  }
+
+  .footerLogo h2 {
+    font-size: 20px;
+  }
+
+  .companyDesc {
+    font-size: 14px;
+  }
+
+  .contactItem {
+    font-size: 14px;
+  }
+
+  .footerLinks a {
+    font-size: 14px;
+  }
+
+  .socialLinks {
+    gap: 10px;
+  }
+
+  .socialLink {
+    width: 32px;
+    height: 32px;
+  }
+
+  .paymentMethods img {
+    height: 20px;
+  }
+
+  /* Adjust container padding */
+  .container {
+    padding: 0 15px;
+  }
+}
+
+/* Base container style update */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Main footer padding adjustment */
+.mainFooter {
+  padding: 40px 0;
+}
+
+/* Newsletter section container */
+.newsletterSection .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Mobile Responsive Enhancements */
+@media (max-width: 768px) {
+  /* Header Mobile Styles */
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .topBar {
+    display: none; /* Hide top bar on mobile */
+  }
+
+  .mainHeader .container {
+    padding: 10px 15px;
+  }
+
+  .logo h1 {
+    font-size: 20px;
+  }
+
+  .searchWrapper {
+    position: relative;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .searchInput {
+    width: 100%;
+    padding: 10px 15px;
+  }
+
+  .searchButton {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px 15px;
+  }
+
+  /* Navigation Mobile Styles */
+  .mainNav {
+    padding: 0;
+  }
+
+  .navLinks {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
+    background: white;
+    padding: 80px 20px 20px;
+    transition: all 0.3s ease;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+
+  .navLinks.active {
+    left: 0;
+  }
+
+  .navLinks ul {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .navLinks a {
+    display: block;
+    padding: 12px 0;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .mobileMenuButton {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: white;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  /* Footer Mobile Enhancements */
+  .newsletterSection {
+    padding: 30px 15px;
+  }
+
+  .newsletterContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .newsletterText h3 {
+    font-size: 20px;
+  }
+
+  .inputGroup {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .inputGroup input,
+  .inputGroup button {
+    width: 100%;
+    margin: 5px 0;
+    border-radius: 25px;
+  }
+
+  /* Footer Grid Mobile Layout */
+  .footerGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 20px;
+  }
+
+  .footerColumn {
+    text-align: center;
+    padding: 0 15px;
+  }
+
+  .footerColumn h3 {
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+
+  .footerColumn h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(45deg, #007bff, #00bcd4);
+  }
+
+  /* Contact Info Mobile */
+  .contactInfo {
+    align-items: center;
+  }
+
+  .contactItem {
+    justify-content: center;
+    padding: 8px;
+    margin: 5px 0;
+    background: #f8f9fa;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* Footer Links Mobile */
+  .footerLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footerLinks a {
+    padding: 8px 15px;
+    background: #f8f9fa;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+  }
+
+  .footerLinks a:hover {
+    transform: translateX(0) translateY(-3px);
+    background: #007bff;
+    color: white;
+  }
+
+  /* Social Links Mobile */
+  .socialLinks {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .socialLink {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  /* App Buttons Mobile */
+  .appButtons {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  .appButton img {
+    height: 40px;
+  }
+
+  /* Sub Footer Mobile */
+  .subFooter {
+    padding: 20px 15px;
+  }
+
+  .subFooterContent {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .paymentMethods {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .paymentMethods img {
+    height: 25px;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+  .mainHeader {
+    padding: 10px 0;
+  }
+
+  .searchWrapper {
+    margin: 5px 0;
+  }
+
+  .newsletterText h3 {
+    font-size: 18px;
+  }
+
+  .footerColumn h3 {
+    font-size: 18px;
+  }
+
+  .contactItem {
+    font-size: 14px;
+  }
+
+  .socialLink {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .appButton img {
+    height: 35px;
+  }
+}
+
+/* Overlay for Mobile Menu */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* Mobile Header Enhancements */
+@media (max-width: 768px) {
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  }
+
+  .mainHeader {
+    padding: 10px 0;
+  }
+
+  .mainHeader .container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 15px;
+    padding: 0 15px;
+  }
+
+  .logo {
+    order: 1;
+  }
+
+  .logo h1 {
+    font-size: 22px;
+    margin: 0;
+  }
+
+  .headerActions {
+    order: 2;
+    display: flex;
+    gap: 15px;
+    margin-left: auto;
+  }
+
+  .actionButton {
+    background: none;
+  }
+}
