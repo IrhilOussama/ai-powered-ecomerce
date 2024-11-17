@@ -14,22 +14,24 @@ from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
-
+dirname = os.path.dirname(__file__)
 # Access environment variables
-DATA_FOLDER = os.getenv("IMAGES_FOLDER_PATH");
-IMAGES_FOLDER = os.path.join(DATA_FOLDER, "images")
+IMAGES_FOLDER = os.path.join(dirname ,os.getenv("IMAGES_FOLDER_PATH"))
+IMAGES_FEATURES = os.path.join(dirname ,os.getenv("IMAGES_FEATURES_FILE"))
+FILENAMES = os.path.join(dirname ,os.getenv("FILENAMES_FILE"))
+
 SERVER_IP = os.getenv("SERVER_IP");
 SERVER_PORT = os.getenv("SERVER_PORT");
-print(DATA_FOLDER);
 DISTANCE_THRESHOLD = 0.5  # Example threshold; adjust based on your data
 
 # Initialize Flask app
 app = Flask(__name__)
 cors = CORS(app);
 
+
 # Load precomputed image features and filenames from pickle files
-Image_features = pkl.load(open(os.path.join(DATA_FOLDER, 'Images_features.pkl'), 'rb'))
-filenames = pkl.load(open(os.path.join(DATA_FOLDER, 'filenames.pkl'), 'rb'))
+Image_features = pkl.load(open(IMAGES_FEATURES, 'rb'))
+filenames = pkl.load(open(os.path.join(dirname ,FILENAMES), 'rb'))
 
 # Set up K-Nearest Neighbors model for finding similar images
 neighbors = NearestNeighbors(n_neighbors=5, algorithm='brute', metric='euclidean')
