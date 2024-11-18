@@ -21,6 +21,7 @@ IMAGES_FEATURES = os.path.join(dirname ,os.getenv("IMAGES_FEATURES_FILE"))
 FILENAMES = os.path.join(dirname ,os.getenv("FILENAMES_FILE"))
 
 SERVER_IP = os.getenv("SERVER_IP");
+PROTOCOLE = os.getenv("SERVER_PROTOCOLE");
 SERVER_PORT = os.getenv("SERVER_PORT");
 DISTANCE_THRESHOLD = 0.5  # Example threshold; adjust based on your data
 
@@ -110,7 +111,7 @@ api = [];
 for i in range(len(image_files)):
     api.append({
         'id': i,
-        'image': 'http://' + SERVER_IP + ':' + SERVER_PORT + '/images/' + image_files[i],
+        'image': PROTOCOLE + '://' + SERVER_IP + ':' + SERVER_PORT + '/images/' + image_files[i],
         'title': "test image",
         'description': "test image description",
         'category': "test",
