@@ -60,15 +60,6 @@ def extract_features_from_image(img):
 # Route to handle image upload and find similar images
 @app.route('/find_similar_images', methods=['POST'])
 def find_similar_images():
-    # Check if the image is part of the request
-    # if 'image' not in request.files:
-    #     return jsonify({'error': 'No image part'}), 400
-
-    # file = request.files['image']
-
-    # if file.filename == '':
-    #     return jsonify({'error': 'No selected file'}), 400
-    # image_url = request.form.get('image');
 
     # Get the 'url' parameter from the form data in the POST request
     image = request.form.get('url')  # This is the dynamic image path
@@ -83,22 +74,23 @@ def find_similar_images():
     print(f"Image Path: {img_path}");
     # Read the image and extract features
     try:
-        # img = Image.open(io.BytesIO(file.read()))
-        img = Image.open(img_path)
-        img_features = extract_features_from_image(img)
+        return jsonify({'similar_images': ['dummy_image_1', 'dummy_image_2']}), 200
+    # try:
+    #     img = Image.open(img_path)
+    #     img_features = extract_features_from_image(img)
 
-        # Find similar images using KNN
-        distances, indices = neighbors.kneighbors([img_features])
+    #     # Find similar images using KNN
+    #     distances, indices = neighbors.kneighbors([img_features])
 
-        # Get the paths of the similar images
-        similar_images = [filenames[i] for i in indices[0]]
+    #     # Get the paths of the similar images
+    #     similar_images = [filenames[i] for i in indices[0]]
 
-        # Create URLs for the similar images by appending the base URL
-        base_url = request.host_url + 'images/'
-        similar_images = [base_url + os.path.basename(filename) for filename in similar_images]
+    #     # Create URLs for the similar images by appending the base URL
+    #     base_url = request.host_url + 'images/'
+    #     similar_images = [base_url + os.path.basename(filename) for filename in similar_images]
 
-        # Return the paths of the similar images as JSON response
-        return jsonify({'similar_images': similar_images}), 200
+    #     # Return the paths of the similar images as JSON response
+    #     return jsonify({'similar_images': similar_images}), 200
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -143,7 +135,6 @@ def serve_image(filename):
     try:
         # Serve the specific image from the folder
         return send_from_directory(IMAGES_FOLDER, filename)
-    
     except Exception as e:
         return str(e), 500
 
