@@ -11,6 +11,7 @@ from PIL import Image
 import io
 from flask_cors import CORS
 from dotenv import load_dotenv
+from datetime import datetime
 
 # Load environment variables from .env file
 load_dotenv()
@@ -57,43 +58,45 @@ def extract_features_from_image(img):
     features = features / np.linalg.norm(features)  # Normalize the features
     return features
 
+with app.app_context():
+    print("Warming up the model...")
+    dummy_input = np.zeros((1, 224, 224, 3))  # Dummy input matching model's input shape
+    model.predict(dummy_input)
+    print("Model is warmed up and ready!")
+
+
 # Route to handle image upload and find similar images
 @app.route('/find_similar_images', methods=['POST'])
 def find_similar_images():
-
-    # Get the 'url' parameter from the form data in the POST request
-    image = request.form.get('url')  # This is the dynamic image path
-
-    # Ensure the 'url' parameter is provided
+    image = request.form.get('url')
     if not image:
         return jsonify({'error': 'No image URL provided'}), 400
 
-    # Construct the full image path
-    img_path = os.path.join(IMAGES_FOLDER, image) 
+    img_path = os.path.join(IMAGES_FOLDER, image)
+    if not os.path.exists(img_path):
+        return jsonify({'error': f'Image not found: {img_path}'}), 404
 
-    print(f"Image Path: {img_path}");
-    # Read the image and extract features
     try:
-        return jsonify({'similar_images': ['dummy_image_1', 'dummy_image_2']}), 200
-    # try:
-    #     img = Image.open(img_path)
-    #     img_features = extract_features_from_image(img)
+        # Extract features
+        img = Image.open(img_path)
+        img_features = extract_features_from_image(img)
 
-    #     # Find similar images using KNN
-    #     distances, indices = neighbors.kneighbors([img_features])
+        # Measure KNN performance
+        start_time = datetime.now()
+        distances, indices = neighbors.kneighbors([img_features])
+        end_time = datetime.now()
+        print(f"KNN Execution Time: {end_time - start_time}")
 
-    #     # Get the paths of the similar images
-    #     similar_images = [filenames[i] for i in indices[0]]
+        # Generate response
+        similar_images = [filenames[i] for i in indices[0]]
+        base_url = request.host_url + 'images/'
+        similar_images = [base_url + os.path.basename(filename) for filename in similar_images]
 
-    #     # Create URLs for the similar images by appending the base URL
-    #     base_url = request.host_url + 'images/'
-    #     similar_images = [base_url + os.path.basename(filename) for filename in similar_images]
-
-    #     # Return the paths of the similar images as JSON response
-    #     return jsonify({'similar_images': similar_images}), 200
-
+        return jsonify({'similar_images': similar_images}), 200
     except Exception as e:
+        print(f"Error: {str(e)}")
         return jsonify({'error': str(e)}), 500
+
 
 
 
@@ -109,6 +112,7 @@ for i in range(len(image_files)):
         'category': "test",
         'price': (i+1)*100
     })
+
 
 ### IMAGES SERVER
 @app.route('/images/', methods=['GET'])
