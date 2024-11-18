@@ -82,17 +82,17 @@ def find_similar_images():
         img_features = extract_features_from_image(img)
 
         # Measure KNN performance
-        start_time = datetime.now()
-        distances, indices = neighbors.kneighbors([img_features])
-        end_time = datetime.now()
-        print(f"KNN Execution Time: {end_time - start_time}")
+        # start_time = datetime.now()
+        # distances, indices = neighbors.kneighbors([img_features])
+        # end_time = datetime.now()
+        # print(f"KNN Execution Time: {end_time - start_time}")
 
         # Generate response
-        similar_images = [filenames[i] for i in indices[0]]
-        base_url = request.host_url + 'images/'
-        similar_images = [base_url + os.path.basename(filename) for filename in similar_images]
-
-        return jsonify({'similar_images': similar_images}), 200
+        # similar_images = [filenames[i] for i in indices[0]]
+        # base_url = request.host_url + 'images/'
+        # similar_images = [base_url + os.path.basename(filename) for filename in similar_images]
+        return jsonify({'similar_images': ['dummy_image_1', 'dummy_image_2']}), 200
+        # return jsonify({'similar_images': similar_images}), 200
     except Exception as e:
         print(f"Error: {str(e)}")
         return jsonify({'error': str(e)}), 500
