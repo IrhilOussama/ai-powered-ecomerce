@@ -29,14 +29,23 @@ with open(similarities_file, 'r') as f:
 # Create API data
 image_files = [f for f in os.listdir(IMAGES_FOLDER) if f.endswith(('jpg', 'jpeg', 'png'))]
 api = []
-for i, file_name in enumerate(image_files):
+for file_name in image_files:
+    # Extract numeric part from the filename manually
+    image_id = ''
+    for char in file_name:
+        if char.isdigit():  # Check if the character is a digit
+            image_id += char
+
+    # Convert the extracted numeric part to an integer if found, otherwise set to None
+    image_id = int(image_id) if image_id else None
+
     api.append({
-        'id': i,
+        'id': image_id,
         'image': f"{PROTOCOLE}://{SERVER_IP}:{SERVER_PORT}/images/{file_name}",
         'title': "test image",
         'description': "test image description",
         'category': "test",
-        'price': (i + 1) * 100
+        'price': (image_id + 1) * 100 if image_id is not None else 0  # Default price for invalid IDs
     })
 
 ### API Endpoints
