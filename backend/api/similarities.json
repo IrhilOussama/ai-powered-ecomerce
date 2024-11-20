@@ -1,0 +1,102 @@
+{
+    "0": {
+        "image_id": 0,
+        "similar_images": [
+            "http://localhost:5000/images/0.png",
+            "http://localhost:5000/images/5.jpeg",
+            "http://localhost:5000/images/9.jpg",
+            "http://localhost:5000/images/3.png",
+            "http://localhost:5000/images/8.jpg"
+        ]
+    },
+    "1": {
+        "image_id": 1,
+        "similar_images": [
+            "http://localhost:5000/images/1.jpeg",
+            "http://localhost:5000/images/7.png",
+            "http://localhost:5000/images/2.jpg",
+            "http://localhost:5000/images/4.jpg",
+            "http://localhost:5000/images/8.jpg"
+        ]
+    },
+    "2": {
+        "image_id": 2,
+        "similar_images": [
+            "http://localhost:5000/images/2.jpg",
+            "http://localhost:5000/images/1.jpeg",
+            "http://localhost:5000/images/4.jpg",
+            "http://localhost:5000/images/7.png",
+            "http://localhost:5000/images/6.png"
+        ]
+    },
+    "3": {
+        "image_id": 3,
+        "similar_images": [
+            "http://localhost:5000/images/3.png",
+            "http://localhost:5000/images/8.jpg",
+            "http://localhost:5000/images/0.png",
+            "http://localhost:5000/images/5.jpeg",
+            "http://localhost:5000/images/6.png"
+        ]
+    },
+    "4": {
+        "image_id": 4,
+        "similar_images": [
+            "http://localhost:5000/images/4.jpg",
+            "http://localhost:5000/images/2.jpg",
+            "http://localhost:5000/images/1.jpeg",
+            "http://localhost:5000/images/7.png",
+            "http://localhost:5000/images/8.jpg"
+        ]
+    },
+    "5": {
+        "image_id": 5,
+        "similar_images": [
+            "http://localhost:5000/images/5.jpeg",
+            "http://localhost:5000/images/0.png",
+            "http://localhost:5000/images/9.jpg",
+            "http://localhost:5000/images/3.png",
+            "http://localhost:5000/images/8.jpg"
+        ]
+    },
+    "6": {
+        "image_id": 6,
+        "similar_images": [
+            "http://localhost:5000/images/6.png",
+            "http://localhost:5000/images/3.png",
+            "http://localhost:5000/images/8.jpg",
+            "http://localhost:5000/images/0.png",
+            "http://localhost:5000/images/5.jpeg"
+        ]
+    },
+    "7": {
+        "image_id": 7,
+        "similar_images": [
+            "http://localhost:5000/images/7.png",
+            "http://localhost:5000/images/1.jpeg",
+            "http://localhost:5000/images/4.jpg",
+            "http://localhost:5000/images/2.jpg",
+            "http://localhost:5000/images/8.jpg"
+        ]
+    },
+    "8": {
+        "image_id": 8,
+        "similar_images": [
+            "http://localhost:5000/images/8.jpg",
+            "http://localhost:5000/images/3.png",
+            "http://localhost:5000/images/5.jpeg",
+            "http://localhost:5000/images/6.png",
+            "http://localhost:5000/images/0.png"
+        ]
+    },
+    "9": {
+        "image_id": 9,
+        "similar_images": [
+            "http://localhost:5000/images/9.jpg",
+            "http://localhost:5000/images/5.jpeg",
+            "http://localhost:5000/images/0.png",
+            "http://localhost:5000/images/3.png",
+            "http://localhost:5000/images/8.jpg"
+        ]
+    }
+}

@@ -33,7 +33,7 @@ export default function ProductPage() {
         method: 'GET', // Specify the HTTP method
         headers: {
           'Accept': 'application/json', // Indicate that you expect a JSON response
-          'ngrok-skip-browser-warning': "potato"
+          // 'ngrok-skip-browser-warning': "potato"
         },
       });
       setProduct(data);
@@ -53,10 +53,7 @@ export default function ProductPage() {
       const filename = array[array.length - 1];
       formData.append('url', filename);
 
-      const response = await fetch(`${API_URL}/find_similar_images`, {
-        method: 'POST',
-        body: formData, // Send as FormData instead of JSON
-      });
+      const response = await fetch(`${API_URL}/similar_product/${id}`);
 
       const data = await response.json();
       console.log(data)
