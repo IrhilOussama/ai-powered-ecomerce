@@ -63,7 +63,7 @@ def precompute_similarities():
             ]
             results[idx] = {
                 'image_id': idx,
-                'similar_images': similar_images
+                'similar_images': similar_images[1:]
             }
         except Exception as e:
             print(f"Error processing {img_name}: {e}")
