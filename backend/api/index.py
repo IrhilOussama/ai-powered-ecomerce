@@ -60,9 +60,16 @@ def list_images():
 @app.route('/images/id/<int:id>', methods=['GET'])
 def serving_image(id):
     try:
-        return jsonify(api[id])
+        # Find the API entry with the matching image ID
+        result = next((item for item in api if item['id'] == id), None)
+
+        if result:
+            return jsonify(result)
+        else:
+            return jsonify({'error': 'Image ID not found'}), 404
     except Exception as e:
-        return str(e), 500
+        return jsonify({'error': str(e)}), 500
+
 
 @app.route('/images/<filename>', methods=['GET'])
 def serve_image(filename):
