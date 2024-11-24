@@ -15,8 +15,17 @@ FILENAMES_PATH =  os.getenv("FILENAMES_FILE");
 # Load model
 model = resnet();
 
-# Process all images
-filenames = [os.path.join(IMAGES_FOLDER, file) for file in sorted(os.listdir(IMAGES_FOLDER))]
+# Process all images\# Helper function to extract the numeric part of the file name
+def extract_number(filename):
+    # Remove the file extension and extract the number
+    return int(os.path.splitext(filename)[0])
+
+# List files and sort numerically by the numeric part
+filenames = [
+    os.path.join(IMAGES_FOLDER, file)
+    for file in sorted(os.listdir(IMAGES_FOLDER), key=extract_number)
+]
+
 image_features = [extract_features_from_images(file, model) for file in filenames]
 
 # Save features and filenames

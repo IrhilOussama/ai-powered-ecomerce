@@ -23,11 +23,11 @@ Image_features = pkl.load(open(IMAGE_FEATURES_PATH, 'rb'))
 filenames = pkl.load(open(FILENAMES_PATH, 'rb'))
 
 # KNN Model
-neighbors = NearestNeighbors(n_neighbors=3, algorithm='brute', metric='euclidean')
+neighbors = NearestNeighbors(n_neighbors=5, algorithm='brute', metric='euclidean')
 neighbors.fit(Image_features)
 
 # Input image
-input_image_path = os.path.join(IMAGES_FOLDER, '5.jpeg')
+input_image_path = os.path.join(IMAGES_FOLDER, '10.jpg')
 
 # Extract input image features
 input_feature = extract_features_from_images(input_image_path, model)
