@@ -12,7 +12,7 @@ IMAGES_FOLDER = os.path.join(dirname, os.getenv("IMAGES_FOLDER_PATH"))
 FILENAMES = os.path.join(dirname, os.getenv("FILENAMES_FILE"))
 SERVER_IP = os.getenv("SERVER_IP")
 PROTOCOLE = os.getenv("SERVER_PROTOCOLE")
-SERVER_PORT = int(os.getenv("SERVER_PORT"))  
+SERVER_PORT = os.getenv("SERVER_PORT")
 
 # Initialize Flask app
 app = Flask(__name__)
