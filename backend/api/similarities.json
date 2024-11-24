@@ -18,7 +18,7 @@
         ]
     },
     "2": {
-        "image_id": 2,
+        "image_id": 10,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/5.jpg",
             "https://ai-powered-ecomerce.onrender.com:/images/11.jpg",
@@ -27,7 +27,7 @@
         ]
     },
     "3": {
-        "image_id": 3,
+        "image_id": 11,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/1.jpg",
             "https://ai-powered-ecomerce.onrender.com:/images/17.jpg",
@@ -36,7 +36,7 @@
         ]
     },
     "4": {
-        "image_id": 4,
+        "image_id": 12,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/1.jpg",
             "https://ai-powered-ecomerce.onrender.com:/images/17.jpg",
@@ -45,7 +45,7 @@
         ]
     },
     "5": {
-        "image_id": 5,
+        "image_id": 13,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/15.jpg",
             "https://ai-powered-ecomerce.onrender.com:/images/7.png",
@@ -54,7 +54,7 @@
         ]
     },
     "6": {
-        "image_id": 6,
+        "image_id": 14,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/15.jpg",
             "https://ai-powered-ecomerce.onrender.com:/images/4.jpg",
@@ -63,7 +63,7 @@
         ]
     },
     "7": {
-        "image_id": 7,
+        "image_id": 15,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/14.jpg",
             "https://ai-powered-ecomerce.onrender.com:/images/4.jpg",
@@ -72,7 +72,7 @@
         ]
     },
     "8": {
-        "image_id": 8,
+        "image_id": 16,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/11.jpg",
             "https://ai-powered-ecomerce.onrender.com:/images/1.jpg",
@@ -81,7 +81,7 @@
         ]
     },
     "9": {
-        "image_id": 9,
+        "image_id": 17,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/1.jpg",
             "https://ai-powered-ecomerce.onrender.com:/images/11.jpg",
@@ -90,7 +90,7 @@
         ]
     },
     "10": {
-        "image_id": 10,
+        "image_id": 18,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/20.jpg",
             "https://ai-powered-ecomerce.onrender.com:/images/8.jpg",
@@ -99,7 +99,7 @@
         ]
     },
     "11": {
-        "image_id": 11,
+        "image_id": 19,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/4.jpg",
             "https://ai-powered-ecomerce.onrender.com:/images/15.jpg",
@@ -108,7 +108,7 @@
         ]
     },
     "12": {
-        "image_id": 12,
+        "image_id": 2,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/7.png",
             "https://ai-powered-ecomerce.onrender.com:/images/4.jpg",
@@ -117,7 +117,7 @@
         ]
     },
     "13": {
-        "image_id": 13,
+        "image_id": 20,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/18.jpg",
             "https://ai-powered-ecomerce.onrender.com:/images/0.png",
@@ -126,7 +126,7 @@
         ]
     },
     "14": {
-        "image_id": 14,
+        "image_id": 3,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/8.jpg",
             "https://ai-powered-ecomerce.onrender.com:/images/0.png",
@@ -135,7 +135,7 @@
         ]
     },
     "15": {
-        "image_id": 15,
+        "image_id": 4,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/2.png",
             "https://ai-powered-ecomerce.onrender.com:/images/19.jpg",
@@ -144,7 +144,7 @@
         ]
     },
     "16": {
-        "image_id": 16,
+        "image_id": 5,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/10.jpg",
             "https://ai-powered-ecomerce.onrender.com:/images/11.jpg",
@@ -153,7 +153,7 @@
         ]
     },
     "17": {
-        "image_id": 17,
+        "image_id": 6,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/3.png",
             "https://ai-powered-ecomerce.onrender.com:/images/8.jpg",
@@ -162,7 +162,7 @@
         ]
     },
     "18": {
-        "image_id": 18,
+        "image_id": 7,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/13.jpg",
             "https://ai-powered-ecomerce.onrender.com:/images/2.png",
@@ -171,7 +171,7 @@
         ]
     },
     "19": {
-        "image_id": 19,
+        "image_id": 8,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/3.png",
             "https://ai-powered-ecomerce.onrender.com:/images/6.png",
@@ -180,7 +180,7 @@
         ]
     },
     "20": {
-        "image_id": 20,
+        "image_id": 9,
         "similar_images": [
             "https://ai-powered-ecomerce.onrender.com:/images/0.png",
             "https://ai-powered-ecomerce.onrender.com:/images/3.png",

@@ -47,6 +47,7 @@ def precompute_similarities():
     results = {}
     image_files = [f for f in os.listdir(IMAGES_FOLDER) if f.endswith(('jpg', 'jpeg', 'png'))]
 
+    # Ensure image_files and filenames are aligned
     for idx, img_name in enumerate(image_files):
         try:
             img_path = os.path.join(IMAGES_FOLDER, img_name)
@@ -56,14 +57,19 @@ def precompute_similarities():
             # Find the 5 most similar images
             distances, indices = neighbors.kneighbors([img_features])
             
-            # Generate URLs with only the basename of the image
+            # Generate URLs for the similar images
             similar_images = [
                 f"{PROTOCOLE}://{SERVER_IP}:{SERVER_PORT}/images/{os.path.basename(filenames[i])}"
                 for i in indices[0]
             ]
+
+            # Exclude the query image itself from similar images
+            similar_images = [sim_img for sim_img in similar_images if sim_img != f"{PROTOCOLE}://{SERVER_IP}:{SERVER_PORT}/images/{img_name}"]
+
+            # Add results
             results[idx] = {
-                'image_id': idx,
-                'similar_images': similar_images[1:]
+                'image_id': int(img_name.split(".")[0]),  # Ensure correct ID
+                'similar_images': similar_images[:4]     # Take the top 4 similar images
             }
         except Exception as e:
             print(f"Error processing {img_name}: {e}")
