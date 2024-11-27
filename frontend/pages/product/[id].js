@@ -5,6 +5,9 @@ import { API_URL, fetchFromAPI } from '../../utils/api';
 import styles from '../../styles/Product.module.css';
 import Image from 'next/image';
 import { ImAndroid } from 'react-icons/im';
+const loaderProp =({ src }) => {
+  return src;
+}
 
 export default function ProductPage() {
   const router = useRouter();
@@ -56,7 +59,7 @@ export default function ProductPage() {
       const response = await fetch(`${API_URL}/similar_product/${id}`);
 
       const data = await response.json();
-      console.log(data)
+      // console.log(data)
       // Fetch details for each similar product
       const similarProductsDetails = await Promise.all(
         data.similar_images.map(async (url) => {
@@ -103,6 +106,7 @@ export default function ProductPage() {
                 alt={product.title}
                 width={500}
                 height={500}
+                loader={loaderProp}
           />
             )}
           </div>
