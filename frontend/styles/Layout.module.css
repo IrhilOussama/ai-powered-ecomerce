@@ -6,10 +6,12 @@
 }
 
 .container {
+
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
   width: 100%;
+  /* background-color: red; */
 }
 
 .main {
@@ -18,7 +20,6 @@
 
 /* Header Styles */
 .header {
-  position: fixed;
   top: 0;
   z-index: 1000;
   background: white;
@@ -59,7 +60,7 @@
 
 /* Main Header */
 .mainHeader {
-  padding: 20px 0;
+  padding: 0 0 20px;
   background: white;
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
@@ -88,13 +89,17 @@
   justify-content: space-evenly;
   align-items: center;
   padding: 0 10px;
-  /* position: inherit; */
+  position: sticky;
+  top: 0;
+  z-index: 92929;
+  background-color: white;
+  height: 70px;
 }
 .searchRow{
   display: block;
 }
 .searchWrapper {
-  display: block;
+  display: flex;
   width: 100%;
   background: #f8f9fa;
   padding: 5px;
@@ -111,8 +116,6 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   background: white;
-  width: 100%;
-  margin-bottom: 5px;
 }
 .categorySelect:focus{
   outline: none
@@ -121,15 +124,16 @@
 
 .searchInputWrapper {
   display: flex;
+  flex-grow: 1;
   border: 1px solid #ddd;
   border-radius: 4px;
   position: relative;
 }
 
 .searchInput {
-  display: block;
-  width: 75%;
-  /* padding: 10px 15px; */
+  display: flex;
+  flex-grow: 1;
+  padding: 10px 15px;
   border: none;
   outline: none;
   background: transparent;
@@ -137,7 +141,8 @@
 
 .searchButton {
   display: block;
-  width: 20%;
+  /* width: 20%; */
+  padding: 8px 14px;
   margin: 4px;
   background: linear-gradient(45deg, #007bff, #00bcd4);
   color: white;
@@ -153,6 +158,7 @@
 
 .headerActions {
   display: flex;
+  padding: 0 30px ;
   gap: 20px;
 }
 
@@ -250,7 +256,7 @@
   padding: 60px 0;
   color: white;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .newsletterSection::before {
@@ -536,7 +542,7 @@
   display: inline-block;
   transition: transform 0.3s ease;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   border-radius: 8px;
 }
 
@@ -834,7 +840,7 @@
   }
 
   .mainHeader .container {
-    padding: 10px 15px;
+    padding: 0 15px;
   }
 
   .logo h1 {
@@ -1111,13 +1117,18 @@
   .mainHeader {
     padding: 10px 0;
   }
+  .categorySelect{
+    
+    width: 100%;
+    margin-bottom: 5px;
+  }
 
   .mainHeader .container {
-    /* display: grid; */
-    /* grid-template-columns: auto 1fr auto; */
-    /* align-items: center; */
-    /* gap: 15px; */
-    /* padding: 0 15px; */
+    /* display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 15px;
+    padding: 0 15px; */
   }
 
   .logo {
@@ -1132,8 +1143,9 @@
   .headerActions {
     order: 2;
     display: flex;
+    justify-content: center;
     gap: 15px;
-    margin-left: auto;
+    /* margin-left: auto; */
   }
 
   .actionButton {

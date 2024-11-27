@@ -11,6 +11,25 @@ export default function Layout({ children }) {
   const router = useRouter();
   return (
     <div className={styles.pageWrapper}>
+              <div className={styles.Header1}>
+              <Link href="/" className={styles.logo}>
+                <h1>STORE</h1>
+              </Link>
+
+              <div className={styles.headerActions}>
+                <button onClick={() => router.push("/account")} className={styles.actionButton}>
+                  <FaUser />
+                  <span>Account</span>
+                </button>
+                <button onClick={() => router.push("/cart")} className={styles.actionButton}>
+                  <div className={styles.cartWrapper}>
+                    <FaShoppingCart />
+                    <span className={styles.cartCount}>0</span>
+                  </div>
+                  <span>Cart</span>
+                </button>
+              </div>
+            </div>
       <header className={styles.header}>
         {/* <div className={styles.topBar}>
           <div className={styles.container}>
@@ -32,28 +51,11 @@ export default function Layout({ children }) {
           </div>
         </div> */}
 
+
         <div className={styles.mainHeader}>
           <div className={styles.container}>
 
-            <div className={styles.Header1}>
-              <Link href="/" className={styles.logo}>
-                <h1>STORE</h1>
-              </Link>
-
-              <div className={styles.headerActions}>
-                <button onClick={() => router.push("/account")} className={styles.actionButton}>
-                  <FaUser />
-                  <span>Account</span>
-                </button>
-                <button onClick={() => router.push("/cart")} className={styles.actionButton}>
-                  <div className={styles.cartWrapper}>
-                    <FaShoppingCart />
-                    <span className={styles.cartCount}>0</span>
-                  </div>
-                  <span>Cart</span>
-                </button>
-              </div>
-            </div>
+            
 
                         
             <div className={styles.searchRow}>
