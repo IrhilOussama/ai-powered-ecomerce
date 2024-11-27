@@ -1,0 +1,119 @@
+/* General Container */
+.container {
+    font-family: Arial, sans-serif;
+    color: #333;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  /* Profile Section */
+  .profileSection {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+  
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+    border: 3px solid #3498db;
+  }
+  
+  .profileDetails {
+    flex-grow: 1;
+  }
+  
+  .name {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #2c3e50;
+  }
+  
+  .email {
+    font-size: 1em;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .membership {
+    font-size: 0.9em;
+    color: #1abc9c;
+    font-weight: bold;
+  }
+  
+  /* Order History Section */
+  .orderHistorySection {
+    margin-bottom: 30px;
+  }
+  
+  .sectionTitle {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #2c3e50;
+  }
+  
+  .orderTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .orderTable th,
+  .orderTable td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .orderTable th {
+    background: #f3f3f3;
+    font-weight: bold;
+  }
+  
+  .orderTable tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .orderTable tr:hover {
+    background: #f1f1f1;
+  }
+  
+  /* Account Settings Section */
+  .settingsSection {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .settingsOptions {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .settingsButton {
+    flex: 1;
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .settingsButton:hover {
+    background: #1abc9c;
+  }
+  

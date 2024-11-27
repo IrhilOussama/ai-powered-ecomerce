@@ -50,7 +50,6 @@ export default function Home() {
           <div className={styles.heroContent}>
             <h2>Welcome to Your Store</h2>
             <p>Discover amazing products at great prices</p>
-            <a href="#" className={styles.ctaButton}>Shop Now</a>
           </div>
         </div>
       </section>

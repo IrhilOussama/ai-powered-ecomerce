@@ -4,14 +4,15 @@ import { FaBars, FaSearch, FaShoppingCart, FaUser, FaTimes,
          FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, 
          FaYoutube, FaMapMarkerAlt, FaPhone, FaEnvelope, FaGooglePlay } from 'react-icons/fa';
 import styles from '../styles/Layout.module.css';
+import { useRouter } from 'next/router';
 
 export default function Layout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const router = useRouter();
   return (
     <div className={styles.pageWrapper}>
       <header className={styles.header}>
-        <div className={styles.topBar}>
+        {/* <div className={styles.topBar}>
           <div className={styles.container}>
             <div className={styles.topBarLeft}>
               <select className={styles.currencySelect}>
@@ -29,45 +30,52 @@ export default function Layout({ children }) {
               <Link href="#" className={styles.topBarLink}>Help</Link>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className={styles.mainHeader}>
           <div className={styles.container}>
-            <Link href="/" className={styles.logo}>
-              <h1>STORE</h1>
-            </Link>
 
-            <div className={styles.searchWrapper}>
-              <select className={styles.categorySelect}>
-                <option>All Categories</option>
-                <option>Electronics</option>
-                <option>Fashion</option>
-              </select>
-              <div className={styles.searchInputWrapper}>
-                <input 
-                  type="text" 
-                  placeholder="Search for products..." 
-                  className={styles.searchInput}
-                />
-                <button className={styles.searchButton}>
-                  <FaSearch />
+            <div className={styles.Header1}>
+              <Link href="/" className={styles.logo}>
+                <h1>STORE</h1>
+              </Link>
+
+              <div className={styles.headerActions}>
+                <button onClick={() => router.push("/account")} className={styles.actionButton}>
+                  <FaUser />
+                  <span>Account</span>
+                </button>
+                <button onClick={() => router.push("/cart")} className={styles.actionButton}>
+                  <div className={styles.cartWrapper}>
+                    <FaShoppingCart />
+                    <span className={styles.cartCount}>0</span>
+                  </div>
+                  <span>Cart</span>
                 </button>
               </div>
             </div>
 
-            <div className={styles.headerActions}>
-              <button className={styles.actionButton}>
-                <FaUser />
-                <span>Account</span>
-              </button>
-              <button className={styles.actionButton}>
-                <div className={styles.cartWrapper}>
-                  <FaShoppingCart />
-                  <span className={styles.cartCount}>0</span>
+                        
+            <div className={styles.searchRow}>
+              <div className={styles.searchWrapper}>
+                <select className={styles.categorySelect}>
+                  <option>All Categories</option>
+                  <option>Electronics</option>
+                  <option>Fashion</option>
+                </select>
+                <div className={styles.searchInputWrapper}>
+                  <input 
+                    type="text" 
+                    placeholder="Search for products..." 
+                    className={styles.searchInput}
+                  />
+                  <button className={styles.searchButton}>
+                    <FaSearch />
+                  </button>
                 </div>
-                <span>Cart</span>
-              </button>
+              </div>
             </div>
+
           </div>
         </div>
 
