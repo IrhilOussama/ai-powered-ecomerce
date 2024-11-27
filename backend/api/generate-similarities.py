@@ -1,84 +1,88 @@
-import os
 import pickle as pkl
 import numpy as np
-import tensorflow as tf
-from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
-from tensorflow.keras.layers import GlobalMaxPool2D
-from sklearn.neighbors import NearestNeighbors
-from PIL import Image
+import os
 import json
-from dotenv import load_dotenv
+from sklearn.cluster import KMeans
+from resnet import resnet
+from sklearn.metrics.pairwise import cosine_similarity
 
-# Load environment variables from .env file
-load_dotenv()
-dirname = os.path.dirname(__file__)
-IMAGES_FOLDER = os.path.join(dirname, os.getenv("IMAGES_FOLDER_PATH"))
-IMAGES_FEATURES = os.path.join(dirname, os.getenv("IMAGES_FEATURES_FILE"))
-FILENAMES = os.path.join(dirname, os.getenv("FILENAMES_FILE"))
-PROTOCOLE = os.getenv("SERVER_PROTOCOLE")
+# Paths
+IMAGES_FOLDER = os.path.join(os.getcwd(), "backend/data/images")
+IMAGE_FEATURES_PATH = os.path.join(os.getcwd(), "backend/data/Images_features.pkl")
+FILENAMES_PATH = os.path.join(os.getcwd(), "backend/data/filenames.pkl")
+jsonFileParentPath = os.path.join(os.getcwd(), "backend/api")
 SERVER_IP = os.getenv("SERVER_IP")
+PROTOCOLE = os.getenv("SERVER_PROTOCOLE")
 SERVER_PORT = os.getenv("SERVER_PORT")
 
-# Load ResNet50 model for feature extraction
-model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
-model.trainable = False
-model = tf.keras.models.Sequential([model, GlobalMaxPool2D()])
+# Load ResNet model
+model = resnet()
 
-# Load precomputed features and filenames
-Image_features = pkl.load(open(IMAGES_FEATURES, 'rb'))
-filenames = pkl.load(open(FILENAMES, 'rb'))
+# Load image features and filenames
+Image_features = pkl.load(open(IMAGE_FEATURES_PATH, 'rb'))
+filenames = pkl.load(open(FILENAMES_PATH, 'rb'))
 
-# Initialize K-Nearest Neighbors model
-neighbors = NearestNeighbors(n_neighbors=5, algorithm='brute', metric='euclidean')
-neighbors.fit(Image_features)
+# Set number of clusters (K)
+K = 3  # You can change this value to the desired number of clusters
 
-# Function to extract features from an image
-def extract_features_from_image(img):
-    img = img.convert('RGB')
-    img = img.resize((224, 224))
-    img_array = np.array(img)
-    img_array = np.expand_dims(img_array, axis=0)
-    img_preprocessed = preprocess_input(img_array)
-    features = model.predict(img_preprocessed).flatten()
-    return features / np.linalg.norm(features)
+# Apply K-means clustering to the image features
+kmeans = KMeans(n_clusters=K, random_state=42)
+kmeans.fit(Image_features)
 
-# Precompute similarities
-def precompute_similarities():
-    results = {}
-    image_files = [f for f in os.listdir(IMAGES_FOLDER) if f.endswith(('jpg', 'jpeg', 'png'))]
+# Get the cluster labels for each image
+cluster_labels = kmeans.labels_
 
-    # Ensure image_files and filenames are aligned
-    for idx, img_name in enumerate(image_files):
-        try:
-            img_path = os.path.join(IMAGES_FOLDER, img_name)
-            img = Image.open(img_path)
-            img_features = extract_features_from_image(img)
+# Similarity threshold (adjustable)
+SIMILARITY_THRESHOLD = 0.6  # Include images with similarity above this threshold
 
-            # Find the 5 most similar images
-            distances, indices = neighbors.kneighbors([img_features])
-            
-            # Generate URLs for the similar images
-            similar_images = [
-                f"{PROTOCOLE}://{SERVER_IP}:{SERVER_PORT}/images/{os.path.basename(filenames[i])}"
-                for i in indices[0]
-            ]
+# Create a dictionary to store the closest images by cluster
+closest_images = {}
 
-            # Exclude the query image itself from similar images
-            similar_images = [sim_img for sim_img in similar_images if sim_img != f"{PROTOCOLE}://{SERVER_IP}:{SERVER_PORT}/images/{img_name}"]
+# Function to calculate cosine similarity
+def calculate_similarity(image_idx):
+    """Calculate cosine similarity for a single image."""
+    feature = Image_features[image_idx].reshape(1, -1)
+    similarities = cosine_similarity(feature, Image_features)
+    return similarities.flatten()
 
-            # Add results
-            results[idx] = {
-                'image_id': int(img_name.split(".")[0]),  # Ensure correct ID
-                'similar_images': similar_images[:4]     # Take the top 4 similar images
-            }
-        except Exception as e:
-            print(f"Error processing {img_name}: {e}")
+# Loop through each image and find dynamically filtered closest images
+for i, filename in enumerate(filenames):
+    # Get the cluster label for the current image
+    cluster_id = cluster_labels[i]
+    
+    # Find images in the same cluster
+    cluster_indices = np.where(cluster_labels == cluster_id)[0]
+    
+    # Calculate similarities between the current image and others in the same cluster
+    similarities = calculate_similarity(i)
+    
+    # Filter by threshold and exclude the current image
+    cluster_similarities = [
+        (filenames[idx], similarities[idx]) 
+        for idx in cluster_indices 
+        if idx != i and similarities[idx] >= SIMILARITY_THRESHOLD
+    ]
+    
+    # Sort the similar images by similarity (descending order)
+    cluster_similarities = sorted(cluster_similarities, key=lambda x: x[1], reverse=True)
+    
+    # Construct the structure as needed
+    similar_images = [
+        f"{PROTOCOLE}://{SERVER_IP}:{SERVER_PORT}/images/{os.path.basename(similar_image)}" 
+        for similar_image, _ in cluster_similarities
+    ]
+    
+    # Store the results in the desired format
+    closest_images[str(i)] = {
+        "image_id": i,
+        "similar_images": similar_images
+    }
 
-    # Save results to JSON file
-    similarities_file = os.path.join(dirname, "similarities.json")
-    with open(similarities_file, 'w') as f:
-        json.dump(results, f, indent=4)
-    print("Similarities saved to 'similarities.json'")
+# Build the output file path
+output_file_path = os.path.join(jsonFileParentPath, 'similarities.json')
 
-if __name__ == '__main__':
-    precompute_similarities()
+# Save the results as a JSON file
+with open(output_file_path, 'w') as json_file:
+    json.dump(closest_images, json_file, indent=4)
+
+print(f"Closest images data has been saved to {output_file_path}.")

@@ -1,4 +1,4 @@
-from flask import Flask, request, send_from_directory, jsonify
+from flask import Flask, send_from_directory, jsonify
 import os
 import pickle as pkl
 from flask_cors import CORS
@@ -107,7 +107,6 @@ def get_product_similar(image_id):
             return jsonify({'error': 'Image ID not found in similarities'}), 404
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 
 # Run the app
 if __name__ == '__main__':
