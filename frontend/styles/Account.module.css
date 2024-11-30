@@ -1,119 +1,208 @@
 /* General Container */
 .container {
-    font-family: Arial, sans-serif;
-    color: #333;
-    padding: 20px;
-    max-width: 900px;
-    margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Profile Section */
+.profileSection {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #2563eb;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.1);
+}
+
+.profileDetails {
+  flex: 1;
+  min-width: 250px;
+}
+
+.name {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.email {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 0.75rem;
+}
+
+.membership {
+  display: inline-block;
+  background: linear-gradient(45deg, #2563eb, #3b82f6);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Order History Section */
+.orderHistorySection {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  overflow-x: auto;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.orderTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 1rem;
+}
+
+.orderTable th,
+.orderTable td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.orderTable th {
+  background: #f8fafc;
+  font-weight: 600;
+  color: #4b5563;
+  white-space: nowrap;
+}
+
+.orderTable th:first-child {
+  border-top-left-radius: 0.5rem;
+}
+
+.orderTable th:last-child {
+  border-top-right-radius: 0.5rem;
+}
+
+.orderTable tr:last-child td:first-child {
+  border-bottom-left-radius: 0.5rem;
+}
+
+.orderTable tr:last-child td:last-child {
+  border-bottom-right-radius: 0.5rem;
+}
+
+.orderTable tbody tr {
+  transition: all 0.2s ease;
+}
+
+.orderTable tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* Settings Section */
+.settingsSection {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.settingsOptions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.settingsButton {
+  background: white;
+  color: #4b5563;
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.settingsButton:hover {
+  background: #f8fafc;
+  border-color: #2563eb;
+  color: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
   }
-  
-  /* Profile Section */
+
   .profileSection {
-    display: flex;
-    align-items: center;
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    padding: 1.5rem;
+    justify-content: center;
+    text-align: center;
   }
-  
-  .avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-right: 20px;
-    border: 3px solid #3498db;
-  }
-  
+
   .profileDetails {
-    flex-grow: 1;
+    text-align: center;
   }
-  
-  .name {
-    font-size: 1.8em;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #2c3e50;
+
+  .orderHistorySection,
+  .settingsSection {
+    padding: 1.5rem;
   }
-  
-  .email {
-    font-size: 1em;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  .membership {
-    font-size: 0.9em;
-    color: #1abc9c;
-    font-weight: bold;
-  }
-  
-  /* Order History Section */
-  .orderHistorySection {
-    margin-bottom: 30px;
-  }
-  
-  .sectionTitle {
-    font-size: 1.5em;
-    margin-bottom: 15px;
-    color: #2c3e50;
-  }
-  
+
   .orderTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+    font-size: 0.875rem;
   }
-  
+
   .orderTable th,
   .orderTable td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    padding: 0.75rem;
   }
-  
-  .orderTable th {
-    background: #f3f3f3;
-    font-weight: bold;
-  }
-  
-  .orderTable tr:nth-child(even) {
-    background: #f9f9f9;
-  }
-  
-  .orderTable tr:hover {
-    background: #f1f1f1;
-  }
-  
-  /* Account Settings Section */
-  .settingsSection {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .settingsOptions {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
+
   .settingsButton {
-    flex: 1;
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background 0.3s;
+    padding: 0.875rem;
   }
-  
-  .settingsButton:hover {
-    background: #1abc9c;
+}
+
+@media (max-width: 480px) {
+  .name {
+    font-size: 1.5rem;
   }
-  
+
+  .orderTable {
+    font-size: 0.75rem;
+  }
+
+  .orderTable th,
+  .orderTable td {
+    padding: 0.5rem;
+  }
+}
