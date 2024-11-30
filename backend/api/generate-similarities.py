@@ -5,12 +5,16 @@ import json
 from sklearn.cluster import KMeans
 from resnet import resnet
 from sklearn.metrics.pairwise import cosine_similarity
+from dotenv import load_dotenv
+
+load_dotenv();
 
 # Paths
-IMAGES_FOLDER = os.path.join(os.getcwd(), "backend/data/images")
-IMAGE_FEATURES_PATH = os.path.join(os.getcwd(), "backend/data/Images_features.pkl")
-FILENAMES_PATH = os.path.join(os.getcwd(), "backend/data/filenames.pkl")
-jsonFileParentPath = os.path.join(os.getcwd(), "backend/api")
+dirname = os.path.dirname(__file__)
+IMAGES_FEATURES = os.path.join(dirname, os.getenv("IMAGES_FEATURES_FILE"))
+FILENAMES = os.path.join(dirname, os.getenv("FILENAMES_FILE"))
+
+jsonFilePath = os.path.join(dirname, "similarities.json");
 SERVER_IP = os.getenv("SERVER_IP")
 PROTOCOLE = os.getenv("SERVER_PROTOCOLE")
 SERVER_PORT = os.getenv("SERVER_PORT")
@@ -19,8 +23,8 @@ SERVER_PORT = os.getenv("SERVER_PORT")
 model = resnet()
 
 # Load image features and filenames
-Image_features = pkl.load(open(IMAGE_FEATURES_PATH, 'rb'))
-filenames = pkl.load(open(FILENAMES_PATH, 'rb'))
+Image_features = pkl.load(open(IMAGES_FEATURES, 'rb'))
+filenames = pkl.load(open(FILENAMES, 'rb'))
 
 # Set number of clusters (K)
 K = 3  # You can change this value to the desired number of clusters
@@ -78,11 +82,8 @@ for i, filename in enumerate(filenames):
         "similar_images": similar_images
     }
 
-# Build the output file path
-output_file_path = os.path.join(jsonFileParentPath, 'similarities.json')
-
 # Save the results as a JSON file
-with open(output_file_path, 'w') as json_file:
+with open(jsonFilePath, 'w') as json_file:
     json.dump(closest_images, json_file, indent=4)
 
-print(f"Closest images data has been saved to {output_file_path}.")
+print(f"Closest images data has been saved to {jsonFilePath}.")

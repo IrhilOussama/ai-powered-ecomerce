@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory, jsonify
+from flask import Flask, send_from_directory, jsonify, request
 import os
 import pickle as pkl
 from flask_cors import CORS
@@ -107,6 +107,23 @@ def get_product_similar(image_id):
             return jsonify({'error': 'Image ID not found in similarities'}), 404
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@app.route('/search', methods=['GET'])
+def search_products():
+    """Search products by query string."""
+    query = request.args.get('q', '').lower()
+    if not query:
+        return jsonify([])
+    
+    # Search through the api list for matching products
+    results = [
+        product for product in api
+        if query in product['title'].lower() 
+        or query in product['description'].lower() 
+        or query in product['category'].lower()
+    ]
+    
+    return jsonify(results)
 
 # Run the app
 if __name__ == '__main__':
