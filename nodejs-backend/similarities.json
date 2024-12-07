@@ -1,0 +1,87 @@
+{
+    "0": {
+        "image_name": "0e54dc42-a6d3-4e10-89b8-779ad2fea7d4.jpg",
+        "similar_images": [
+            "http://localhost:3001/images/3c011691-33af-46a5-9fe8-5bf2f4acce06.jpg",
+            "http://localhost:3001/images/db5612a0-6f3d-45a7-a1d5-7addd7593292.jpg",
+            "http://localhost:3001/images/1c43c177-f7c6-4b5a-848e-ce57392acaf8.jpg"
+        ]
+    },
+    "1": {
+        "image_name": "1c43c177-f7c6-4b5a-848e-ce57392acaf8.jpg",
+        "similar_images": [
+            "http://localhost:3001/images/db5612a0-6f3d-45a7-a1d5-7addd7593292.jpg",
+            "http://localhost:3001/images/0e54dc42-a6d3-4e10-89b8-779ad2fea7d4.jpg",
+            "http://localhost:3001/images/3c011691-33af-46a5-9fe8-5bf2f4acce06.jpg"
+        ]
+    },
+    "2": {
+        "image_name": "2d92cead-d3d0-42d1-b6dc-10ff6bdd57ed.jpg",
+        "similar_images": [
+            "http://localhost:3001/images/81570cae-c11d-40e3-b7a6-2822f47e54c3.jpg",
+            "http://localhost:3001/images/9dbd4906-733f-4145-bd34-6c885c171ba0.jpg",
+            "http://localhost:3001/images/387f8d80-52fa-4dfa-8f36-82eaa1123463.jpg"
+        ]
+    },
+    "3": {
+        "image_name": "387f8d80-52fa-4dfa-8f36-82eaa1123463.jpg",
+        "similar_images": [
+            "http://localhost:3001/images/9dbd4906-733f-4145-bd34-6c885c171ba0.jpg",
+            "http://localhost:3001/images/81570cae-c11d-40e3-b7a6-2822f47e54c3.jpg",
+            "http://localhost:3001/images/2d92cead-d3d0-42d1-b6dc-10ff6bdd57ed.jpg"
+        ]
+    },
+    "4": {
+        "image_name": "3c011691-33af-46a5-9fe8-5bf2f4acce06.jpg",
+        "similar_images": [
+            "http://localhost:3001/images/0e54dc42-a6d3-4e10-89b8-779ad2fea7d4.jpg",
+            "http://localhost:3001/images/db5612a0-6f3d-45a7-a1d5-7addd7593292.jpg",
+            "http://localhost:3001/images/1c43c177-f7c6-4b5a-848e-ce57392acaf8.jpg"
+        ]
+    },
+    "5": {
+        "image_name": "42f9def7-cd90-40e1-adad-994ac46a76cf.jpg",
+        "similar_images": [
+            "http://localhost:3001/images/fa8470f4-6546-4ad7-b61b-609ab4a4e433.jpg",
+            "http://localhost:3001/images/5f6cc7d9-f0c2-49ea-90e2-e105f65286a1.jpg"
+        ]
+    },
+    "6": {
+        "image_name": "5f6cc7d9-f0c2-49ea-90e2-e105f65286a1.jpg",
+        "similar_images": [
+            "http://localhost:3001/images/fa8470f4-6546-4ad7-b61b-609ab4a4e433.jpg",
+            "http://localhost:3001/images/42f9def7-cd90-40e1-adad-994ac46a76cf.jpg"
+        ]
+    },
+    "7": {
+        "image_name": "81570cae-c11d-40e3-b7a6-2822f47e54c3.jpg",
+        "similar_images": [
+            "http://localhost:3001/images/9dbd4906-733f-4145-bd34-6c885c171ba0.jpg",
+            "http://localhost:3001/images/2d92cead-d3d0-42d1-b6dc-10ff6bdd57ed.jpg",
+            "http://localhost:3001/images/387f8d80-52fa-4dfa-8f36-82eaa1123463.jpg"
+        ]
+    },
+    "8": {
+        "image_name": "9dbd4906-733f-4145-bd34-6c885c171ba0.jpg",
+        "similar_images": [
+            "http://localhost:3001/images/387f8d80-52fa-4dfa-8f36-82eaa1123463.jpg",
+            "http://localhost:3001/images/81570cae-c11d-40e3-b7a6-2822f47e54c3.jpg",
+            "http://localhost:3001/images/2d92cead-d3d0-42d1-b6dc-10ff6bdd57ed.jpg"
+        ]
+    },
+    "9": {
+        "image_name": "db5612a0-6f3d-45a7-a1d5-7addd7593292.jpg",
+        "similar_images": [
+            "http://localhost:3001/images/1c43c177-f7c6-4b5a-848e-ce57392acaf8.jpg",
+            "http://localhost:3001/images/0e54dc42-a6d3-4e10-89b8-779ad2fea7d4.jpg",
+            "http://localhost:3001/images/3c011691-33af-46a5-9fe8-5bf2f4acce06.jpg"
+        ]
+    },
+    "10": {
+        "image_name": "fa8470f4-6546-4ad7-b61b-609ab4a4e433.jpg",
+        "similar_images": [
+            "http://localhost:3001/images/42f9def7-cd90-40e1-adad-994ac46a76cf.jpg",
+            "http://localhost:3001/images/5f6cc7d9-f0c2-49ea-90e2-e105f65286a1.jpg"
+        ]
+    }
+}
