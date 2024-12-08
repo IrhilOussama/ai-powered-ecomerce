@@ -697,6 +697,7 @@
     padding: 1rem 0;
     border: none;
     flex: 0 0 auto;
+    z-index: 999;
   }
 
   .menuToggle {
