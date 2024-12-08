@@ -23,6 +23,8 @@ export default function ProductPage() {
     }
   }, [id]);
 
+  console.log(product)
+
   // Fetch similar products when product data is available
   useEffect(() => {
     if (product?.image) {
@@ -32,7 +34,7 @@ export default function ProductPage() {
 
   const fetchProduct = async () => {
     try {
-      const data = await fetchFromAPI(`/images/id/${id}`, {
+      const data = await fetchFromAPI(`/products/${id}`, {
         method: 'GET', // Specify the HTTP method
         headers: {
           'Accept': 'application/json', // Indicate that you expect a JSON response
@@ -56,21 +58,23 @@ export default function ProductPage() {
       const filename = array[array.length - 1];
       formData.append('url', filename);
 
-      const response = await fetch(`${API_URL}/similar_product/${id}`);
+      const response = await fetch(`${API_URL}/similar_product/${filename}`);
 
       const data = await response.json();
       // console.log(data)
       // Fetch details for each similar product
+      // console.log(data);
       const similarProductsDetails = await Promise.all(
         data.similar_images.map(async (url) => {
           const id = url.split('/').pop().split('.')[0];
-          const detailsResponse = await fetch(`${API_URL}/images/id/${id}`,{
+          const detailsResponse = await fetch(`${API_URL}/products/${id}`,{
             method: 'GET', // Specify the HTTP method
             headers: {
               'Accept': 'application/json', // Indicate that you expect a JSON response
               'ngrok-skip-browser-warning': "potato"
             },
           });
+          console.log(id);
           return await detailsResponse.json();
         })
       );
@@ -102,7 +106,7 @@ export default function ProductPage() {
             //     }}
             //   />
             <Image
-                src={product.image}
+                src={API_URL + "/images/" + product.image}
                 alt={product.title}
                 width={500}
                 height={500}
@@ -154,7 +158,7 @@ export default function ProductPage() {
                 >
                   <div className={styles.similarProductImage}>
                     <img 
-                      src={similarProduct.image} 
+                      src={API_URL + "/images/" + similarProduct.image} 
                       alt={similarProduct.title}
                       onError={(e) => {
                         e.target.onerror = null;

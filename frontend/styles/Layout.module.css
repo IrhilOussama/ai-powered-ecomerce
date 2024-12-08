@@ -26,6 +26,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .topBar {
@@ -92,14 +93,18 @@
 
 /* Navigation */
 .nav {
-  display: none;
+  /* display: none; */
   background: white;
   border-top: 1px solid #e5e7eb;
+  transform: none;
+  position: absolute;
+  transition: 0.4s;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 
-.nav.active {
-  display: block;
-}
+
 
 .searchBar {
   display: flex;
@@ -119,6 +124,7 @@
   font-size: 1rem;
   background: white;
   transition: all 0.2s ease;
+
 }
 
 .searchBar input:focus {
@@ -440,6 +446,15 @@
 }
 
 @media (max-width: 768px) {
+  .nav{
+    
+    z-index: -1;
+  }
+  .nav.active {
+    /* display: block; */
+    transform: translateY(100%);
+  }
+
   .mainHeader .container {
     flex-wrap: wrap;
   }
@@ -545,21 +560,9 @@
 @media (max-width: 768px) {
   /* Header Mobile Styles */
   .header {
-    /* position: sticky; */
-    top: 0;
-    z-index: 1000;
-  }
-
-  .topBar {
-    display: none; /* Hide top bar on mobile */
   }
 
   .mainHeader .container {
-    /* display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 15px;
-    padding: 0 15px; */
   }
 
   .logo {
@@ -653,11 +656,11 @@
   }
 
   .mainHeader .container {
-    /* display: grid;
+    display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 15px;
-    padding: 0 15px; */
+    padding: 0 15px;
   }
 
   .logo {

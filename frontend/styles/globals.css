@@ -9,3 +9,8 @@
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
   }
+  a, img, button,div {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none; /* Optional: Prevents accidental text selection */
+  }
+  

@@ -16,7 +16,7 @@ export default function Home() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${API_URL}/images/`, {
+        const response = await fetch(`${API_URL}/products/`, {
           method: 'GET',
           headers: {
             'Accept': 'application/json',
@@ -99,7 +99,7 @@ export default function Home() {
                   onClick={() => handleProductClick(product.id)}
                 >
                   <div className={styles.productImageContainer}>
-                    <img src={product.image} alt={product.title} />
+                    <img src={API_URL + "/images/" + product.image} alt={product.title} />
                   </div>
                   <div className={styles.productInfo}>
                     <h3>{product.title}</h3>

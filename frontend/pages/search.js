@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styles from '../styles/Search.module.css';
 import { FaSearch, FaShoppingCart } from 'react-icons/fa';
+import { API_URL } from '../utils/api';
 
 export default function SearchResults() {
   const router = useRouter();
@@ -15,7 +16,7 @@ export default function SearchResults() {
       
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:5000/search?q=${encodeURIComponent(q)}`);
+        const response = await fetch(`http://localhost:3001/api/search?q=${encodeURIComponent(q)}`);
         const data = await response.json();
         setResults(data);
       } catch (error) {
@@ -58,7 +59,7 @@ export default function SearchResults() {
           {results.map((product) => (
             <div key={product.id} className={styles.product}>
               <div className={styles.productImage}>
-                <img src={product.image} alt={product.title} />
+                <img src={API_URL + "/images/" + product.image} alt={product.title} />
               </div>
               <div className={styles.productInfo}>
                 <h2>{product.title}</h2>

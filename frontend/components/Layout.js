@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import { FaSearch, FaShoppingCart, FaUser, FaBars, FaTimes, FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaPaperPlane, FaCcVisa, FaCcMastercard, FaCcPaypal, FaCcAmazonPay, FaGooglePlay } from 'react-icons/fa';
+import { FaSearch, FaShoppingCart, FaUser, FaBars, FaTimes, FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaPaperPlane, FaCcVisa, FaCcMastercard, FaCcPaypal, FaCcAmazonPay, FaGooglePlay, FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import styles from '../styles/Layout.module.css';
 import { useRouter } from 'next/router';
 
 export default function Layout({ children }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const router = useRouter();
@@ -18,8 +18,8 @@ export default function Layout({ children }) {
     setIsSearching(true);
     
     try {
-      const response = await fetch(`http://localhost:5000/search?q=${encodeURIComponent(searchQuery)}`);
-      const results = await response.json();
+      // const response = await fetch(`http://localhost:3001/api/search?q=${encodeURIComponent(searchQuery)}`);
+      // const results = await response.json();
       
       router.push({
         pathname: '/search',
@@ -57,7 +57,7 @@ export default function Layout({ children }) {
                 className={styles.menuToggle}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
-                {isMenuOpen ? <FaTimes /> : <FaBars />}
+                {isMenuOpen ? <FaArrowUp /> : <FaArrowDown />}
               </button>
             </div>
           </div>
@@ -74,17 +74,6 @@ export default function Layout({ children }) {
                 <FaSearch className={styles.searchIcon} />
               </button>
             </form>
-            <div className={styles.mobileMenu}>
-              <Link href="/new-arrivals">
-                <div className={styles.mobileMenuItem}>New Arrivals</div>
-              </Link>
-              <Link href="/categories">
-                <div className={styles.mobileMenuItem}>Categories</div>
-              </Link>
-              <Link href="/deals">
-                <div className={styles.mobileMenuItem}>Deals</div>
-              </Link>
-            </div>
           </nav>
         </div>
       </header>
