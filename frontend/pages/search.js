@@ -16,7 +16,7 @@ export default function SearchResults() {
       
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:3001/api/search?q=${encodeURIComponent(q)}`);
+        const response = await fetch( API_URL + `/search?q=${encodeURIComponent(q)}`);
         const data = await response.json();
         setResults(data);
       } catch (error) {

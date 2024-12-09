@@ -64,7 +64,7 @@ export default function ProductPage() {
       // console.log(data)
       // Fetch details for each similar product
       // console.log(data);
-      const similarProductsDetails = await Promise.all(
+      let similarProductsDetails = await Promise.all(
         data.similar_images.map(async (url) => {
           const id = url.split('/').pop().split('.')[0];
           const detailsResponse = await fetch(`${API_URL}/products/${id}`,{
@@ -74,10 +74,15 @@ export default function ProductPage() {
               'ngrok-skip-browser-warning': "potato"
             },
           });
-          console.log(id);
-          return await detailsResponse.json();
+          try{
+            const object = await detailsResponse.json();
+            return object;
+          } catch(e){
+            console.error("error while looping on the similar images object: " + e);
+          }
         })
       );
+      similarProductsDetails = similarProductsDetails.filter(product => product != null);
 
       setSimilarProducts(similarProductsDetails);
       setLoadingSimilar(false);
