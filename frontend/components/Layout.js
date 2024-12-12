@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { FaSearch, FaShoppingCart, FaUser, FaBars, FaTimes, FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaPaperPlane, FaCcVisa, FaCcMastercard, FaCcPaypal, FaCcAmazonPay, FaGooglePlay, FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import styles from '../styles/Layout.module.css';
 import { useRouter } from 'next/router';
+import Head from 'next/head'
 
 export default function Layout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -33,6 +34,11 @@ export default function Layout({ children }) {
   };
 
   return (
+    <>
+    
+    <Head>
+      <meta name="google-site-verification" content="po68qYj20e7v7O_OwNOPiXqiLtLQHq0DBxUbGlpBScU" />
+    </Head>
     <div className={styles.pageWrapper}>
       <header className={styles.header}>
         <div className={styles.headerContent}>
@@ -69,7 +75,7 @@ export default function Layout({ children }) {
                 placeholder="Search products..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-              />
+                />
               <button type="submit" disabled={isSearching}>
                 <FaSearch className={styles.searchIcon} />
               </button>
@@ -168,5 +174,6 @@ export default function Layout({ children }) {
         </div>
       </footer>
     </div>
+                </>
   );
 };
