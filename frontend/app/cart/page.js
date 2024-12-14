@@ -1,6 +1,7 @@
+"use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import styles from "../styles/Cart.module.css";
+import styles from "../../styles/Cart.module.css";
 import { 
   FaShoppingCart, 
   FaMinus, 

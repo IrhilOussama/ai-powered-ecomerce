@@ -1,12 +1,13 @@
-import { useRouter } from 'next/router';
+"use client";
 import { useEffect, useState } from 'react';
-import styles from '../styles/Search.module.css';
+import styles from '../../styles/Search.module.css';
 import { FaSearch, FaShoppingCart } from 'react-icons/fa';
-import { API_URL } from '../utils/api';
+import { API_URL } from '../../utils/api';
+import { useSearchParams } from 'next/navigation';
 
 export default function SearchResults() {
-  const router = useRouter();
-  const { q } = router.query;
+  const searchParams = useSearchParams();
+  const q = searchParams.get("q");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
 

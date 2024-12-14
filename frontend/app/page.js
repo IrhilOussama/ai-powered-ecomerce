@@ -1,10 +1,13 @@
+'use client';
 import { useEffect, useState } from 'react';
 import { FaSearch, FaShoppingCart, FaUser, FaBars, FaTimes } from 'react-icons/fa';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import styles from '../styles/Home.module.css';
+import { useRouter } from 'next/navigation';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -38,6 +41,7 @@ export default function Home() {
     router.push(`/product/${productId}`);
   };
 
+  if (!products) return null;
   return (
     <div className={styles.pageWrapper}>
 

@@ -1,27 +1,40 @@
-import { useRouter } from 'next/router';
+"use client";
+import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { API_URL, fetchFromAPI } from '../../utils/api';
-import styles from '../../styles/Product.module.css';
+import { API_URL, fetchFromAPI } from '../../../utils/api';
+import styles from '../../../styles/Product.module.css';
 import Image from 'next/image';
 import { ImAndroid } from 'react-icons/im';
 const loaderProp =({ src }) => {
   return src;
 }
 
-export default function ProductPage() {
+export default function ProductPage(props) {
   const router = useRouter();
-  const { id } = router.query;
+  const [id, setId] = useState();
   const [product, setProduct] = useState(null);
   const [similarProducts, setSimilarProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingSimilar, setLoadingSimilar] = useState(true);
 
   useEffect(() => {
+    const getId = async () => {
+      const myProps = await props.params;
+      setId(myProps.id)
+
+    }
+    getId()
+  }, [])
+
+  useEffect(() => {
     if (id) {
+      console.log(id)
       fetchProduct();
     }
   }, [id]);
+
+  console.log(id)
 
   console.log(product)
 

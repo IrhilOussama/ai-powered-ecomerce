@@ -1,5 +1,6 @@
+"use client";
 import React from "react";
-import styles from "../styles/Account.module.css";
+import styles from "../../styles/Account.module.css";
 import { FaUser, FaEdit, FaKey, FaSignOutAlt, FaHistory, FaBox } from "react-icons/fa";
 
 const AccountPage = () => {
