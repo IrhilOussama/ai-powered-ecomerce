@@ -1,0 +1,233 @@
+{
+    "0": {
+        "image_id": 0,
+        "similar_images": [
+            "http://localhost:5000/images/9.jpg",
+            "http://localhost:5000/images/3.png",
+            "http://localhost:5000/images/8.jpg",
+            "http://localhost:5000/images/6.png",
+            "http://localhost:5000/images/20.jpg",
+            "http://localhost:5000/images/18.jpg"
+        ]
+    },
+    "1": {
+        "image_id": 1,
+        "similar_images": [
+            "http://localhost:5000/images/11.jpg",
+            "http://localhost:5000/images/10.jpg",
+            "http://localhost:5000/images/17.jpg",
+            "http://localhost:5000/images/5.jpg",
+            "http://localhost:5000/images/12.jpeg",
+            "http://localhost:5000/images/16.png"
+        ]
+    },
+    "2": {
+        "image_id": 2,
+        "similar_images": [
+            "http://localhost:5000/images/4.jpg",
+            "http://localhost:5000/images/7.png",
+            "http://localhost:5000/images/19.jpg",
+            "http://localhost:5000/images/15.jpg",
+            "http://localhost:5000/images/13.jpg",
+            "http://localhost:5000/images/14.jpg"
+        ]
+    },
+    "3": {
+        "image_id": 3,
+        "similar_images": [
+            "http://localhost:5000/images/8.jpg",
+            "http://localhost:5000/images/0.png",
+            "http://localhost:5000/images/6.png",
+            "http://localhost:5000/images/9.jpg",
+            "http://localhost:5000/images/18.jpg",
+            "http://localhost:5000/images/20.jpg"
+        ]
+    },
+    "4": {
+        "image_id": 4,
+        "similar_images": [
+            "http://localhost:5000/images/2.png",
+            "http://localhost:5000/images/15.jpg",
+            "http://localhost:5000/images/19.jpg",
+            "http://localhost:5000/images/14.jpg",
+            "http://localhost:5000/images/13.jpg",
+            "http://localhost:5000/images/7.png"
+        ]
+    },
+    "5": {
+        "image_id": 5,
+        "similar_images": [
+            "http://localhost:5000/images/10.jpg",
+            "http://localhost:5000/images/11.jpg",
+            "http://localhost:5000/images/1.jpg",
+            "http://localhost:5000/images/12.jpeg",
+            "http://localhost:5000/images/17.jpg",
+            "http://localhost:5000/images/16.png"
+        ]
+    },
+    "6": {
+        "image_id": 6,
+        "similar_images": [
+            "http://localhost:5000/images/3.png",
+            "http://localhost:5000/images/8.jpg",
+            "http://localhost:5000/images/9.jpg",
+            "http://localhost:5000/images/0.png",
+            "http://localhost:5000/images/20.jpg",
+            "http://localhost:5000/images/18.jpg"
+        ]
+    },
+    "7": {
+        "image_id": 7,
+        "similar_images": [
+            "http://localhost:5000/images/13.jpg",
+            "http://localhost:5000/images/2.png",
+            "http://localhost:5000/images/4.jpg",
+            "http://localhost:5000/images/15.jpg",
+            "http://localhost:5000/images/19.jpg",
+            "http://localhost:5000/images/14.jpg"
+        ]
+    },
+    "8": {
+        "image_id": 8,
+        "similar_images": [
+            "http://localhost:5000/images/3.png",
+            "http://localhost:5000/images/6.png",
+            "http://localhost:5000/images/9.jpg",
+            "http://localhost:5000/images/0.png",
+            "http://localhost:5000/images/18.jpg",
+            "http://localhost:5000/images/20.jpg"
+        ]
+    },
+    "9": {
+        "image_id": 9,
+        "similar_images": [
+            "http://localhost:5000/images/0.png",
+            "http://localhost:5000/images/3.png",
+            "http://localhost:5000/images/8.jpg",
+            "http://localhost:5000/images/6.png",
+            "http://localhost:5000/images/20.jpg",
+            "http://localhost:5000/images/18.jpg"
+        ]
+    },
+    "10": {
+        "image_id": 10,
+        "similar_images": [
+            "http://localhost:5000/images/5.jpg",
+            "http://localhost:5000/images/11.jpg",
+            "http://localhost:5000/images/1.jpg",
+            "http://localhost:5000/images/12.jpeg",
+            "http://localhost:5000/images/16.png",
+            "http://localhost:5000/images/17.jpg"
+        ]
+    },
+    "11": {
+        "image_id": 11,
+        "similar_images": [
+            "http://localhost:5000/images/1.jpg",
+            "http://localhost:5000/images/10.jpg",
+            "http://localhost:5000/images/5.jpg",
+            "http://localhost:5000/images/16.png",
+            "http://localhost:5000/images/17.jpg",
+            "http://localhost:5000/images/12.jpeg"
+        ]
+    },
+    "12": {
+        "image_id": 12,
+        "similar_images": [
+            "http://localhost:5000/images/1.jpg",
+            "http://localhost:5000/images/10.jpg",
+            "http://localhost:5000/images/5.jpg",
+            "http://localhost:5000/images/17.jpg",
+            "http://localhost:5000/images/11.jpg",
+            "http://localhost:5000/images/16.png"
+        ]
+    },
+    "13": {
+        "image_id": 13,
+        "similar_images": [
+            "http://localhost:5000/images/7.png",
+            "http://localhost:5000/images/4.jpg",
+            "http://localhost:5000/images/15.jpg",
+            "http://localhost:5000/images/2.png",
+            "http://localhost:5000/images/14.jpg",
+            "http://localhost:5000/images/19.jpg"
+        ]
+    },
+    "14": {
+        "image_id": 14,
+        "similar_images": [
+            "http://localhost:5000/images/15.jpg",
+            "http://localhost:5000/images/4.jpg",
+            "http://localhost:5000/images/13.jpg",
+            "http://localhost:5000/images/19.jpg",
+            "http://localhost:5000/images/2.png",
+            "http://localhost:5000/images/7.png"
+        ]
+    },
+    "15": {
+        "image_id": 15,
+        "similar_images": [
+            "http://localhost:5000/images/14.jpg",
+            "http://localhost:5000/images/4.jpg",
+            "http://localhost:5000/images/19.jpg",
+            "http://localhost:5000/images/13.jpg",
+            "http://localhost:5000/images/2.png",
+            "http://localhost:5000/images/7.png"
+        ]
+    },
+    "16": {
+        "image_id": 16,
+        "similar_images": [
+            "http://localhost:5000/images/11.jpg",
+            "http://localhost:5000/images/1.jpg",
+            "http://localhost:5000/images/10.jpg",
+            "http://localhost:5000/images/5.jpg",
+            "http://localhost:5000/images/17.jpg",
+            "http://localhost:5000/images/12.jpeg"
+        ]
+    },
+    "17": {
+        "image_id": 17,
+        "similar_images": [
+            "http://localhost:5000/images/1.jpg",
+            "http://localhost:5000/images/11.jpg",
+            "http://localhost:5000/images/12.jpeg",
+            "http://localhost:5000/images/5.jpg",
+            "http://localhost:5000/images/10.jpg",
+            "http://localhost:5000/images/16.png"
+        ]
+    },
+    "18": {
+        "image_id": 18,
+        "similar_images": [
+            "http://localhost:5000/images/20.jpg",
+            "http://localhost:5000/images/8.jpg",
+            "http://localhost:5000/images/3.png",
+            "http://localhost:5000/images/0.png",
+            "http://localhost:5000/images/6.png",
+            "http://localhost:5000/images/9.jpg"
+        ]
+    },
+    "19": {
+        "image_id": 19,
+        "similar_images": [
+            "http://localhost:5000/images/4.jpg",
+            "http://localhost:5000/images/15.jpg",
+            "http://localhost:5000/images/2.png",
+            "http://localhost:5000/images/14.jpg",
+            "http://localhost:5000/images/7.png",
+            "http://localhost:5000/images/13.jpg"
+        ]
+    },
+    "20": {
+        "image_id": 20,
+        "similar_images": [
+            "http://localhost:5000/images/18.jpg",
+            "http://localhost:5000/images/0.png",
+            "http://localhost:5000/images/8.jpg",
+            "http://localhost:5000/images/3.png",
+            "http://localhost:5000/images/6.png",
+            "http://localhost:5000/images/9.jpg"
+        ]
+    }
+}

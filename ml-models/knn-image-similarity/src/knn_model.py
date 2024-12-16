@@ -8,6 +8,8 @@ from dotenv import load_dotenv
 from numpy.linalg import norm
 from extract_features import extract_features_from_images
 from resnet import resnet
+
+# Load environment variables
 load_dotenv()
 
 # Get the path to the raw dataset from the environment variables

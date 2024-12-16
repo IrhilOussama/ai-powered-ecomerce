@@ -17,8 +17,8 @@ model = resnet();
 
 # Process all images\# Helper function to extract the numeric part of the file name
 def extract_number(filename):
-    # Remove the file extension and extract the number
-    return int(os.path.splitext(filename)[0])
+    # Remove the file extension and extract the name
+    return os.path.splitext(filename)[0]
 
 # List files and sort numerically by the numeric part
 filenames = [
