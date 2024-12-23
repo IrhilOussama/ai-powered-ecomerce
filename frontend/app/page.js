@@ -54,7 +54,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={styles.mainNav}>
+        {/* <section className={styles.mainNav}>
           <div className={styles.container}>
             <div className={styles.navGrid}>
               <Link href="/new-arrivals">
@@ -80,7 +80,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section className={styles.featuredProducts}>
           <div className={styles.sectionHeader}>
