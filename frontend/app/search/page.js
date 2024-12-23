@@ -1,11 +1,12 @@
 "use client";
-import { useEffect, useState } from 'react';
-import styles from '../../styles/Search.module.css';
-import { FaSearch, FaShoppingCart } from 'react-icons/fa';
-import { API_URL } from '../../utils/api';
-import { useSearchParams } from 'next/navigation';
 
-export default function SearchResults() {
+import { Suspense, useEffect, useState } from "react";
+import styles from "../../styles/Search.module.css";
+import { FaSearch, FaShoppingCart } from "react-icons/fa";
+import { API_URL } from "../../utils/api";
+import { useSearchParams } from "next/navigation";
+
+function SearchResultsContent() {
   const searchParams = useSearchParams();
   const q = searchParams.get("q");
   const [results, setResults] = useState([]);
@@ -14,14 +15,14 @@ export default function SearchResults() {
   useEffect(() => {
     async function fetchResults() {
       if (!q) return;
-      
+
       setLoading(true);
       try {
-        const response = await fetch( API_URL + `/search?q=${encodeURIComponent(q)}`);
+        const response = await fetch(API_URL + `/search?q=${encodeURIComponent(q)}`);
         const data = await response.json();
         setResults(data);
       } catch (error) {
-        console.error('Failed to fetch results:', error);
+        console.error("Failed to fetch results:", error);
       } finally {
         setLoading(false);
       }
@@ -40,7 +41,7 @@ export default function SearchResults() {
           Search Results for "{q}"
         </h1>
         <p className={styles.resultCount}>
-          {results.length} {results.length === 1 ? 'result' : 'results'} found
+          {results.length} {results.length === 1 ? "result" : "results"} found
         </p>
       </div>
 
@@ -77,5 +78,13 @@ export default function SearchResults() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function SearchResults() {
+  return (
+    <Suspense fallback={<div>Loading search results...</div>}>
+      <SearchResultsContent />
+    </Suspense>
   );
 }
