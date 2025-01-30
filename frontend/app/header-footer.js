@@ -89,8 +89,8 @@ export default function HeaderFooter ({children}){
             <div className={styles.footerContent}>
               {/* About Section */}
               <div className={styles.footerSection}>
-                <h3>AI Shop</h3>
-                <p>Your trusted AI-powered shopping destination. We bring you the future of online shopping with personalized recommendations and seamless experience.</p>
+                <h3>Smartomarket</h3>
+                <p>Welecome to smartomarket, place where you find modern new brand clothes with perfect prices, don't miss the chance to look great today and see latest clothes in your smart market</p>
                 <div className={styles.socialLinks}>
                   <a href="#" aria-label="Facebook">
                     <FaFacebook />
