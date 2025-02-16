@@ -3,7 +3,8 @@ import Product from '../models/Product.js';
 import { saveBase64Image } from '../utils/fileUtils.js';
 import { promises as fs } from 'fs';
 import path from 'path';
-const { SIMILARITIES_FILE, IMAGES_FOLDER_PATH } = process.env;
+const SIMILARITIES_FILE = "./data/similarities.json";
+const IMAGES_FOLDER_PATH = "./public/images";
 if (!SIMILARITIES_FILE) {
     throw new Error("SIMILARITIES_FILE is not defined");
 }
@@ -135,8 +136,11 @@ export const updateProduct = async (req, res) => {
 export const deleteProduct = async (req, res) => {
     try {
         const productImage = (await Product.getOne(req.params.id)).image;
+        if (!productImage)
+            throw new Error("error in product controller image is undefined");
+        console.log(path.join(IMAGES_FOLDER_PATH, productImage));
         if (productImage) {
-            fs.unlink(path.join(IMAGES_FOLDER_PATH, productImage));
+            fs.unlink(path.resolve(IMAGES_FOLDER_PATH, productImage));
         }
         const product = await Product.delete(req.params.id);
         res.json({ msg: "product with id " + req.params.id + " has deleted successfuly" });
