@@ -98,7 +98,7 @@ export default function Layout({ children }) {
           {/* About Section */}
           <div className={styles.footerSection}>
             <h3>Smartomarket</h3>
-            <p>Welecome to smartomarket, place where you find modern new brand clothes with perfect prices, don't miss the chance to look great today and see latest clothes in your smart market</p>
+            <p>Smartomarket, Here are modern clothes, perfect prices, look great today and see latest clothes in your Smartomarket</p>
             <div className={styles.socialLinks}>
               <a href="#" aria-label="Facebook">
                 <FaFacebook />

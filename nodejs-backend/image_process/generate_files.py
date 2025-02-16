@@ -10,9 +10,12 @@ load_dotenv()
 dirname = os.path.dirname(__file__)
 
 # Get the path to the raw dataset from the environment variables
-IMAGES_FOLDER = os.path.join(dirname, os.getenv("IMAGES_FOLDER_PATH"));
-IMAGE_FEATURES_PATH = os.path.join(dirname, os.getenv("IMAGES_FEATURES_FILE"));
-FILENAMES_PATH =  os.path.join(dirname, os.getenv("FILENAMES_FILE"));
+# IMAGES_FOLDER = os.path.join(dirname, os.getenv("IMAGES_FOLDER_PATH"));
+# IMAGE_FEATURES_PATH = os.path.join(dirname, os.getenv("IMAGES_FEATURES_FILE"));
+# FILENAMES_PATH =  os.path.join(dirname, os.getenv("FILENAMES_FILE"));
+IMAGES_FOLDER = os.getenv("IMAGES_FOLDER_PATH");
+IMAGE_FEATURES_PATH = os.getenv("IMAGES_FEATURES_FILE");
+FILENAMES_PATH = os.getenv("FILENAMES_FILE");
 
 # Load model
 model = resnet();

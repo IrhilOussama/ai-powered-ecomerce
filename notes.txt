@@ -1,0 +1,23 @@
+
+node-ts -> run typescript directly without compiling to js, usefull during developement not production;
+
+// modules organisation ways:
+commonjs -> old, used on nodejs, Synchronouce
+es -> modern, can run directly on browser, Asynchronounce
+//
+
+nodejs use commonjs by default, but to let it know that you are using ES module, put `"type":"module"` in package.json
+//nodejs with ES
+full path is required: import a from './a' -> import a from './a.js'
+
+// commonjs
+__currentDir
+// es js
+import { fileURLToPath } from 'url';
+const currentDir = path.dirname(fileURLToPath(import.meta.url));
+
+await Promise.all(..) -> wait all promises
+
+ON DELETE CASCADE;
+
+dotenv.config() -> load env vars into process.env var;

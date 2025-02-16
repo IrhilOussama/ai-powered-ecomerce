@@ -6,7 +6,7 @@ import styles from '../styles/Layout.module.css';
 import { useRouter } from 'next/navigation';
 
 export default function HeaderFooter ({children}){
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const router = useRouter();
@@ -90,7 +90,7 @@ export default function HeaderFooter ({children}){
               {/* About Section */}
               <div className={styles.footerSection}>
                 <h3>Smartomarket</h3>
-                <p>Welecome to smartomarket, place where you find modern new brand clothes with perfect prices, don't miss the chance to look great today and see latest clothes in your smart market</p>
+                <p>Welcome to smartomarket, place where you find modern new brand clothes with perfect prices, don't miss the chance to look great today and see latest clothes in your smart market</p>
                 <div className={styles.socialLinks}>
                   <a href="#" aria-label="Facebook">
                     <FaFacebook />

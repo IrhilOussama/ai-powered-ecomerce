@@ -1,208 +1,80 @@
-/* General Container */
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Profile Section */
+.title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
 .profileSection {
   display: flex;
   align-items: center;
-  background: white;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
   gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #2563eb;
-  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.1);
-}
-
-.profileDetails {
-  flex: 1;
-  min-width: 250px;
-}
-
-.name {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #1f2937;
-  margin-bottom: 0.5rem;
-}
-
-.email {
-  font-size: 1rem;
-  color: #6b7280;
-  margin-bottom: 0.75rem;
-}
-
-.membership {
-  display: inline-block;
-  background: linear-gradient(45deg, #2563eb, #3b82f6);
+  width: 80px;
+  height: 80px;
+  background-color: #0070f3;
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-/* Order History Section */
-.orderHistorySection {
-  background: white;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
-  overflow-x: auto;
-}
-
-.sectionTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.orderTable {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin-top: 1rem;
-}
-
-.orderTable th,
-.orderTable td {
-  padding: 1rem;
-  text-align: left;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.orderTable th {
-  background: #f8fafc;
-  font-weight: 600;
-  color: #4b5563;
-  white-space: nowrap;
-}
-
-.orderTable th:first-child {
-  border-top-left-radius: 0.5rem;
-}
-
-.orderTable th:last-child {
-  border-top-right-radius: 0.5rem;
-}
-
-.orderTable tr:last-child td:first-child {
-  border-bottom-left-radius: 0.5rem;
-}
-
-.orderTable tr:last-child td:last-child {
-  border-bottom-right-radius: 0.5rem;
-}
-
-.orderTable tbody tr {
-  transition: all 0.2s ease;
-}
-
-.orderTable tbody tr:hover {
-  background: #f8fafc;
-}
-
-/* Settings Section */
-.settingsSection {
-  background: white;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-.settingsOptions {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.settingsButton {
-  background: white;
-  color: #4b5563;
-  border: 1px solid #e5e7eb;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
-.settingsButton:hover {
-  background: #f8fafc;
-  border-color: #2563eb;
-  color: #2563eb;
-  transform: translateY(-2px);
+.userInfo {
+  flex: 1;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .container {
-    padding: 1rem;
-  }
-
-  .profileSection {
-    padding: 1.5rem;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .profileDetails {
-    text-align: center;
-  }
-
-  .orderHistorySection,
-  .settingsSection {
-    padding: 1.5rem;
-  }
-
-  .orderTable {
-    font-size: 0.875rem;
-  }
-
-  .orderTable th,
-  .orderTable td {
-    padding: 0.75rem;
-  }
-
-  .settingsButton {
-    padding: 0.875rem;
-  }
+.userName {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
 }
 
-@media (max-width: 480px) {
-  .name {
-    font-size: 1.5rem;
-  }
+.userEmail {
+  color: #666;
+  margin-bottom: 0.25rem;
+}
 
-  .orderTable {
-    font-size: 0.75rem;
-  }
+.userId {
+  color: #888;
+  font-size: 0.9rem;
+}
 
-  .orderTable th,
-  .orderTable td {
-    padding: 0.5rem;
-  }
+.actions {
+  border-top: 1px solid #eee;
+  padding-top: 1.5rem;
+}
+
+.logoutButton, .editButton {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #0070f3;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+.logoutButton{
+  margin-left: 20px;
+  background-color: #f33d00;
+}
+
+.editButton:hover {
+  background-color: #0051a2;
+}
+.logoutButton:hover {
+  background-color: #761403;
 }

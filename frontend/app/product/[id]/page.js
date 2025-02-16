@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { API_URL, fetchFromAPI } from '../../../utils/api';
 import styles from '../../../styles/Product.module.css';
 import Image from 'next/image';
-import { ImAndroid } from 'react-icons/im';
 const loaderProp =({ src }) => {
   return src;
 }
@@ -22,28 +21,23 @@ export default function ProductPage(props) {
     const getId = async () => {
       const myProps = await props.params;
       setId(myProps.id)
-
     }
     getId()
   }, [])
 
   useEffect(() => {
     if (id) {
-      console.log(id)
       fetchProduct();
     }
   }, [id]);
 
-  console.log(id)
-
-  console.log(product)
-
-  // Fetch similar products when product data is available
   useEffect(() => {
-    if (product?.image) {
-      fetchSimilarProducts(product.image);
+    if (product) {
+      fetchSimilarProducts();
     }
   }, [product]);
+
+  console.log(product)
 
   const fetchProduct = async () => {
     try {
@@ -61,41 +55,22 @@ export default function ProductPage(props) {
     }
   };
 
-  const fetchSimilarProducts = async (imageUrl) => {
+  const fetchSimilarProducts = async () => {
     try {
       setLoadingSimilar(true);
-      
-      // Create FormData object
-      const formData = new FormData();
-      let array = imageUrl.split('/');
-      const filename = array[array.length - 1];
-      formData.append('url', filename);
-
-      const response = await fetch(`${API_URL}/similar_product/${filename}`);
-
-      const data = await response.json();
-      // console.log(data)
-      // Fetch details for each similar product
-      // console.log(data);
+      let similarProductsIds = product['similar_products_ids'];
+      console.log(similarProductsIds)
       let similarProductsDetails = await Promise.all(
-        data.similar_images.map(async (url) => {
-          const id = url.split('/').pop().split('.')[0];
-          const detailsResponse = await fetch(`${API_URL}/products/${id}`,{
+        similarProductsIds.map( async (current_similar_product_id) => {
+          return await fetchFromAPI(`/products/${current_similar_product_id}`, {
             method: 'GET', // Specify the HTTP method
             headers: {
-              'Accept': 'application/json', // Indicate that you expect a JSON response
-              'ngrok-skip-browser-warning': "potato"
+              'Accept': 'application/json',
             },
           });
-          try{
-            const object = await detailsResponse.json();
-            return object;
-          } catch(e){
-            console.error("error while looping on the similar images object: " + e);
-          }
         })
       );
-      similarProductsDetails = similarProductsDetails.filter(product => product != null);
+      // similarProductsDetails = similarProductsDetails.filter(product => product != null);
 
       setSimilarProducts(similarProductsDetails);
       setLoadingSimilar(false);
@@ -180,7 +155,7 @@ export default function ProductPage(props) {
                       alt={similarProduct.title}
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = 'https://via.placeholder.com/200';
+                        e.target.src = '/placeholder.png';
                       }}
                     />
                   </div>

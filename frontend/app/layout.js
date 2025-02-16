@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import HeaderFooter from "./header-footer";
+import { AuthProvider } from "@/context/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,11 +15,15 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "smartomarket",
-  description: "Welecome to smartomarket, place where you find modern new brand clothes with perfect prices, don't miss the chance to look great today and see latest clothes in your smart market",
+  description: "Welcome to Smartomarket! Discover modern, brand-new clothes at perfect prices. Shop the latest fashion trends and look great today at your smart market",
 };
 
 export default function RootLayout({ children }) {
-  return <HeaderFooter children={children}/>
+  return(
+    <AuthProvider>
+      <HeaderFooter children={children}/>
+    </AuthProvider>
+  ) 
 }
 
 

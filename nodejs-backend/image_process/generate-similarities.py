@@ -10,11 +10,13 @@ from dotenv import load_dotenv
 load_dotenv();
 
 # Paths
-dirname = os.path.dirname(__file__)
-IMAGES_FEATURES = os.path.join(dirname, os.getenv("IMAGES_FEATURES_FILE"))
-FILENAMES = os.path.join(dirname, os.getenv("FILENAMES_FILE"))
+# dirname = os.path.dirname(__file__)
+# IMAGES_FEATURES = os.path.join(dirname, os.getenv("IMAGES_FEATURES_FILE"))
+# FILENAMES = os.path.join(dirname, os.getenv("FILENAMES_FILE"))
+IMAGES_FEATURES = os.getenv("IMAGES_FEATURES_FILE");
+FILENAMES = os.getenv("FILENAMES_FILE");
 
-jsonFilePath = os.path.join(dirname, "similarities.json");
+jsonFilePath = os.getenv("SIMILARITIES_FILE");
 SERVER_IP = os.getenv("SERVER_IP")
 PROTOCOLE = os.getenv("SERVER_PROTOCOLE")
 SERVER_PORT = os.getenv("SERVER_PORT")
