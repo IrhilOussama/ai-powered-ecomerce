@@ -6,6 +6,9 @@ import EditAccountPage from "@/components/accountEdit";
 
 export default function Account() {
   const {user} = useAuth();
+  if (!user) {
+    return <div>Loading user data...</div>;
+  }
   return (
     <>
       {user? (

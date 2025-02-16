@@ -6,6 +6,7 @@ import styles from "../styles/AccountEdit.module.css";
 export default function EditAccountPage() {
   const { user, updateUser } = useAuth();
   const router = useRouter();
+  console.log(user);
   const [formData, setFormData] = useState({
     name: user.username || "",
     email: user.email || ""
