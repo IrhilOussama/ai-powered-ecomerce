@@ -6,7 +6,7 @@ dotenv.config();
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: 'http://localhost:8000/api/auth/google/callback', // This should match the Authorized redirect URI in Google Cloud Console.
+    callbackURL: process.env.GOOGLE_REDIRECT_URL, // This should match the Authorized redirect URI in Google Cloud Console.
 }, async (accessToken, refreshToken, profile, done) => {
     try {
         // Extract the user's email and display name from the profile.
