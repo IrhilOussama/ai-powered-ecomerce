@@ -7,6 +7,7 @@ const myDBPool = new Pool({
     host: process.env.DB_HOST,
     database: process.env.DB_NAME,
     password: process.env.DB_PASSWORD,
+    ssl: process.env.SSL_MODE === 'require' ? { rejectUnauthorized: false } : false, // Use SSL if required
     //   port: process.env.DB_PORT,
 });
 console.log("Postgres Connection Successful");
