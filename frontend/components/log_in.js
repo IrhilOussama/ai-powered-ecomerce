@@ -13,7 +13,7 @@ export default function Log_In_Page({setLogin}) {
 
     const onSubmit = async (data) => {
       try {
-        const response = await axios.post("http://localhost:8000/api/users/login", data);
+        const response = await axios.post(`${API_URL}/users/login`, data);
         const token = response.data.token;
         const userData = response.data.user;
         login(token, userData);
