@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
+import { API_URL } from "@/utils/api";
 export default function Sign_Up_Page({setLogin}) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const {login} = useAuth();
@@ -12,7 +13,7 @@ export default function Sign_Up_Page({setLogin}) {
  
     const onSubmit = async (data) => {
       try {
-        const response = await axios.post("http://localhost:8000/api/users", data);
+        const response = await axios.post(`${API_URL}/users`, data);
         const token = response.data.token;
         const userData = response.data.user;
         console.log(response);
