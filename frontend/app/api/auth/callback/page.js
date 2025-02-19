@@ -11,8 +11,6 @@ export default function googleCallback(){
       <GoogleCallbackComponent />
     </Suspense>
   );
-
-  return <div className={styles.loader}><div></div><div></div><div></div></div>
 }
 
 
