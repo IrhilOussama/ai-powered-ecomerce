@@ -8,7 +8,7 @@ import { Suspense } from 'react';
 export default function googleCallback(){
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <GoogleCallbackComponent props />
+      <GoogleCallbackComponent />
     </Suspense>
   );
 
@@ -29,10 +29,6 @@ export function GoogleCallbackComponent(){
   }
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <GoogleCallbackComponent />
-    </Suspense>
+      <div className={styles.loader}><div></div><div></div><div></div></div>
   );
-
-  return <div className={styles.loader}><div></div><div></div><div></div></div>
 }

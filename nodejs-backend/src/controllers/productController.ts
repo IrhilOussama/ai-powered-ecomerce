@@ -32,10 +32,10 @@ interface similar_product {
     rank: string
 }
 
-export const getProduct = async (req: Request, res: Response) => {
+export const getProduct = async (req: Request, res: Response) : Promise<void> => {
     try{
         const product = await Product.getOne(req.params.id);
-        if (product === undefined) return res.json({error: "no such product with this id"});
+        if (product === undefined) res.json({error: "no such product with this id"});
         let similarProducts: similar_product[] = await Product.getSimilars(req.params.id);
         let ids: string[] = similarProducts.map((e: similar_product) => {
             return e.similar_product_id;

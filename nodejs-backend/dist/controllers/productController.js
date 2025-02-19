@@ -25,7 +25,7 @@ export const getProduct = async (req, res) => {
     try {
         const product = await Product.getOne(req.params.id);
         if (product === undefined)
-            return res.json({ error: "no such product with this id" });
+            res.json({ error: "no such product with this id" });
         let similarProducts = await Product.getSimilars(req.params.id);
         let ids = similarProducts.map((e) => {
             return e.similar_product_id;
