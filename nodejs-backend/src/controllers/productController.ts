@@ -157,7 +157,7 @@ export const deleteProduct = async (req: Request, res: Response) => {
     try{
         const productImage = (await Product.getOne(req.params.id)).image;
         if (!productImage) throw new Error("error in product controller image is undefined")
-        console.log(path.join(IMAGES_FOLDER_PATH, productImage))
+        // console.log(path.join(IMAGES_FOLDER_PATH, productImage))
         if (productImage){
             fs.unlink(path.resolve(IMAGES_FOLDER_PATH, productImage));
         }
