@@ -108,7 +108,7 @@ export default function Home() {
                         onClick={() => handleProductClick(product.id)}
                         >
                         <div className={styles.productImageContainer}>
-                            <img src={API_URL + "/images/" + product.image} alt={product.title} />
+                            <img src={product.image} alt={product.title} />
                         </div>
                         <div className={styles.productInfo}>
                             <h3>{product.title}</h3>
@@ -138,7 +138,7 @@ export default function Home() {
                                 onClick={() => handleProductClick(product.id)}
                             >
                                 <div className={styles.productImageContainer}>
-                                <img src={API_URL + "/images/" + product.image} alt={product.title} />
+                                <img src={product.image} alt={product.title} />
                                 </div>
                                 <div className={styles.productInfo}>
                                 <h3>{product.title}</h3>

@@ -99,7 +99,7 @@ export default function ProductPage(props) {
             //     }}
             //   />
             <Image
-                src={API_URL + "/images/" + product.image}
+                src={product.image}
                 alt={product.title}
                 width={500}
                 height={500}
@@ -151,7 +151,7 @@ export default function ProductPage(props) {
                 >
                   <div className={styles.similarProductImage}>
                     <img 
-                      src={API_URL + "/images/" + similarProduct.image} 
+                      src={similarProduct.image} 
                       alt={similarProduct.title}
                       onError={(e) => {
                         e.target.onerror = null;
