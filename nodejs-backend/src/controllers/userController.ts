@@ -29,8 +29,11 @@ export const createUser = async (req: Request, res: Response) => {
         if (!username || !email || !password){
             res.status(400).json({error: "username, email and password are required"})
         }
-        const message = await registerUser(username, email, password);
-        res.status(201).json(message);
+        else {
+            const message = await registerUser(username, email, password);
+            res.status(201).json(message);
+
+        }
 
     } catch(error){
         console.error("error creating user: " + error);
@@ -45,8 +48,11 @@ export const updateUser = async (req: Request, res: Response) => {
         if (!username || !email || !password){
             res.status(400).json({error: "username, email and password are required"})
         }
-        const user = await User.update({id, username, email, password});
-        res.status(200).json({msg: "user updated successfuly", user})
+        else {
+            const user = await User.update({id, username, email, password});
+            res.status(200).json({msg: "user updated successfuly", user})
+
+        }
     } catch(error){
         console.error("error updating user: " + error);
         res.status(500).json({error: "error updating user"});
