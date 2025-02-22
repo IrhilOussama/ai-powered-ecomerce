@@ -112,7 +112,7 @@ export default function ProductPage(props) {
             <h1>{product.title}</h1>
             <p className={styles.price}>${product.price}</p>
             <p className={styles.description}>{product.description}</p>
-            <p className={styles.category}>Category: {product.category}</p>
+            <p className={styles.category}>Category: {product["category_title"]}</p>
             
             <div className={styles.actions}>
               <div className={styles.quantity}>
