@@ -2,6 +2,7 @@ import express from "express";
 import { getAllProducts, getRecommandedProducts, getProduct, createProduct, updateProduct, deleteProduct } from "../controllers/productController.js";
 import { authenticate } from "../middlewares/authMiddleware.js";
 const ProductRouter = express.Router(); 
+import upload from "../middlewares/upload.js";
 
 ProductRouter.get("/", getAllProducts);
 ProductRouter.get("/recommended", authenticate, getRecommandedProducts);

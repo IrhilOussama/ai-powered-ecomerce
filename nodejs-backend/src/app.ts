@@ -27,6 +27,11 @@ app.use('/api/categories', CategoryRouter);
 app.use('/api/users', UserRouter);
 app.use('/api/auth', AuthRouter);
 app.use('/api/products', ProductRouter);
+
+app.use("/health", (req, res) => {
+    res.status(200).send("Server is running!");
+});
+
 app.use(ErrorHandler);
 
 export default app;

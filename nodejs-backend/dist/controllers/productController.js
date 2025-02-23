@@ -1,8 +1,7 @@
 import Category from '../models/Category.js';
 import Product from '../models/Product.js';
 import { saveBase64Image } from '../utils/fileUtils.js';
-import { promises as fs } from 'fs';
-import path from 'path';
+import cloudinary from '../config/cloudinary.js';
 const SIMILARITIES_FILE = "./data/similarities.json";
 const IMAGES_FOLDER_PATH = "./public/images";
 if (!SIMILARITIES_FILE) {
@@ -62,31 +61,52 @@ export const getRecommandedProducts = async (req, res) => {
     }
 };
 export const createProduct = async (req, res) => {
+    let uploadedImage;
     try {
         let { title, description, category_id, price, image } = req.body;
+        const base64Prefix = "data:image/jpeg;base64,";
         // Validate required fields
         if (!title || !price || !description || !image || !category_id) {
-            res.status(400).json({ error: 'title, description, categorie_id, image and price are required fields' });
+            res.status(400).json({ error: 'title, description, category_id, image, and price are required fields' });
             return;
         }
-        // check for the category id
-        const myCategorie = await Category.getOne(category_id);
-        if (myCategorie === undefined)
-            res.json({ error: "category dosn't exist" });
-        // Save the base64 image and get the image
-        let filename = await saveBase64Image(image);
-        console.log('Image saved as:', filename);
-        // Insert product with the new image image
-        const newProduct = await Product.create({ title, description, category_id, price, image: filename });
-        // response
+        console.log(1);
+        // Check if the category exists
+        const myCategory = await Category.getOne(category_id);
+        if (!myCategory) {
+            res.status(404).json({ error: "Category doesn't exist" });
+            return;
+        }
+        if (!image.startsWith("data:image")) {
+            image = base64Prefix + image;
+        }
+        console.log(3);
+        // Upload image to Cloudinary
+        uploadedImage = await cloudinary.uploader.upload(image, {
+            folder: "products", // Organize images in a Cloudinary folder
+            use_filename: true,
+            unique_filename: true,
+            overwrite: true,
+        });
+        console.log(4);
+        // Save product to database with Cloudinary image URL
+        const newProduct = await Product.create({
+            title,
+            description,
+            category_id,
+            price,
+            image: uploadedImage.secure_url, // Use Cloudinary URL instead of local filename
+        });
+        // Send response
         res.status(201).json({
-            message: 'Product created successfully',
-            product: newProduct
+            message: "Product created successfully",
+            product: newProduct,
         });
     }
     catch (error) {
-        console.error("error creating product: " + error);
-        res.status(500).json({ error: "error creating product" });
+        // console.error("Error creating product:", error);
+        console.log(uploadedImage);
+        res.status(500).json({ error: "Internal server error" });
     }
 };
 export const updateProduct = async (req, res) => {
@@ -138,9 +158,16 @@ export const deleteProduct = async (req, res) => {
         const productImage = (await Product.getOne(req.params.id)).image;
         if (!productImage)
             throw new Error("error in product controller image is undefined");
-        console.log(path.join(IMAGES_FOLDER_PATH, productImage));
+        // console.log(path.join(IMAGES_FOLDER_PATH, productImage))
         if (productImage) {
-            fs.unlink(path.resolve(IMAGES_FOLDER_PATH, productImage));
+            // Extract public ID from the full Cloudinary URL
+            const urlParts = productImage.split("/");
+            const filenameWithExtension = urlParts.pop(); // Get last part: "vsv1uhtye0ntmv4rhrve.jpg"
+            const publicId = filenameWithExtension?.split(".")[0]; // Remove file extension
+            if (publicId) {
+                await cloudinary.uploader.destroy(`products/${publicId}`);
+                console.log(`Cloudinary image deleted: products/${publicId}`);
+            }
         }
         const product = await Product.delete(req.params.id);
         res.json({ msg: "product with id " + req.params.id + " has deleted successfuly" });
