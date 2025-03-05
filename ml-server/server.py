@@ -128,7 +128,7 @@ async def get_similar_images(file: UploadFile = File(...)):
         
         # SERVERING PRODUCTS ARRAY
         logging.info(f"Similar images found: {products}")
-        return {"similar_images": products}
+        return products
     
     except Exception as e:
         import traceback
