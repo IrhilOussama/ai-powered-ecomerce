@@ -22,7 +22,7 @@ const improveSimilarities = async () => {
             if (product === undefined) console.log(`the image with name ${image_name} doesn't belong to a product!`);
 
             let similar_products_ids = await Promise.all(similar_images.map( async (image) => {
-                let current_image_name = image.split("/").pop();
+                let current_image_name = image; // -1 -> exclue the last element '.jpg'
                 let current_product = (await Product.getOneByImage(current_image_name));
                 if (current_product === undefined) console.log(`the image with name ${current_image_name} doesn't belong to a product!`);
                 return current_product.id;
@@ -43,7 +43,7 @@ const improveSimilarities = async () => {
 try {
     await db.query("TRUNCATE similar_products CASCADE");
     const similaritiesArray = await improveSimilarities();
-    console.log(similaritiesArray)
+    // console.log(similaritiesArray)
     await Promise.all(similaritiesArray.map(async (element) => {
         const similarProducts = element['similar_products'];
         

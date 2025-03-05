@@ -34,6 +34,17 @@ class Product {
             "FROM product AS p, categorie as c WHERE (p.categorie_id = c.id) AND (p.image = $1)", [image]));
         return result.rows[0];
     }
+    static async getOneByImageFilename(filename: string): Promise<MyProduct> {
+        const result = await db.query(
+            `SELECT p.id, p.title, p.categorie_id, p.description, price, image, value, c.title AS category_title 
+             FROM product AS p
+             JOIN categorie AS c ON p.categorie_id = c.id
+             WHERE SPLIT_PART(SPLIT_PART(p.image, '/', array_length(string_to_array(p.image, '/'), 1)), '.', 1) = $1`, 
+            [filename]
+        );
+        return result.rows[0];
+    }
+    
     static async create(data: MyProduct){
         let { title, description, category_id, price, image } = data;
         const result = (await db.query(

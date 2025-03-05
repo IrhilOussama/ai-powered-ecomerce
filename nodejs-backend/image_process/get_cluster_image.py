@@ -19,12 +19,6 @@ IMAGE_CLUSTERS_FILE = os.getenv("IMAGES_CLUSTERS_FILE")
 model = resnet()
 
 def load_features_and_filenames():
-    """
-    Load image features and filenames from saved files.
-    
-    Returns:
-        tuple: (image_features, filenames)
-    """
     with open(IMAGE_FEATURES_PATH, 'rb') as f:
         image_features = np.load(f, allow_pickle=True)
     with open(FILENAMES_PATH, 'rb') as f:
@@ -84,7 +78,7 @@ def assign_cluster(new_feature, image_features, filenames):
 
 def add_new_image(new_image_path):
     """
-    Add a new image, determine its cluster, and update the clusters file.
+    Add a new image, determine its cluster
     
     Args:
         new_image_path (str): Path to the new image file.

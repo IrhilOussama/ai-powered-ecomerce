@@ -37,6 +37,18 @@ export const getProduct = async (req, res) => {
         res.status(500).json({ error: "error fetching product" });
     }
 };
+export const getProductByImageFilename = async (req, res) => {
+    try {
+        const product = await Product.getOneByImageFilename(req.params.filename);
+        if (product === undefined)
+            res.json({ error: "no such product with this id" });
+        res.json(product);
+    }
+    catch (error) {
+        console.error("error fetching product: " + error);
+        res.status(500).json({ error: "error fetching product" });
+    }
+};
 export const getSimilarProducts = async (req, res) => {
     try {
         const similar_products = await Product.getSimilars(req.params.id);
