@@ -11,6 +11,7 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.resnet50 import preprocess_input
 from PIL import Image
+import requests
 import ast  # Used to safely parse the string representation of lists
 
 # Import your model (ensure resnet.py exists and has a resnet() function)
@@ -27,6 +28,7 @@ DB_HOST = os.getenv("DB_HOST")
 DB_NAME = os.getenv("DB_NAME")
 DB_USER = os.getenv("DB_USER")
 DB_PASS = os.getenv("DB_PASSWORD")
+BACKEND_API = os.getenv("BACKEND_API")
 
 # Function to get a database connection
 def get_db_connection():
@@ -95,12 +97,38 @@ async def get_similar_images(file: UploadFile = File(...)):
         # Sort by similarity (highest first) and get top 5 similar images
         similarities.sort(key=lambda x: x[1], reverse=True)
         similar_images = [img[0] for img in similarities][:5]
+        similar_images_filenames = []
+
+        for image_url in similar_images:
+            # Extract the filename from the URL
+            filename = image_url.split("/")[-1]
+            # Remove the file extension
+            filename_without_extension = filename.split(".")[0]
+            # Add the filename (without extension) to the new array
+            similar_images_filenames.append(filename_without_extension)
         
         cur.close()
         conn.close()
+
+        products = []
+
+        # Loop through each image filename and make a request
+        for filename in similar_images_filenames:
+            url = f"{BACKEND_API}/products/image/{filename}"
+            
+            try:
+                response = requests.get(url)
+                if response.status_code == 200:  # Ensure request was successful
+                    product_data = response.json()
+                    products.append(product_data)
+                else:
+                    print(f"Failed to fetch product for {filename}, Status Code: {response.status_code}")
+            except requests.exceptions.RequestException as e:
+                print(f"Error fetching product for {filename}: {e}")
         
-        logging.info(f"Similar images found: {similar_images}")
-        return {"similar_images": similar_images}
+        # SERVERING PRODUCTS ARRAY
+        logging.info(f"Similar images found: {products}")
+        return {"similar_images": products}
     
     except Exception as e:
         import traceback
