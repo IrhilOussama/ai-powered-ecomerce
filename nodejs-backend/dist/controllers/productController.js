@@ -12,7 +12,22 @@ if (!IMAGES_FOLDER_PATH) {
 }
 export const getAllProducts = async (req, res) => {
     try {
-        const products = await Product.getAll();
+        let products;
+        const { category, limit, page } = req.query;
+        // Convert query params to appropriate types
+        const categoryFilter = category ? parseInt(String(category)) : undefined;
+        const limitNum = limit ? parseInt(String(limit), 10) : undefined;
+        const pageNum = page ? parseInt(String(page), 10) : undefined;
+        if (!category && !limit && !page) {
+            products = await Product.getAll();
+        }
+        else {
+            products = await Product.getFiltered({
+                category: categoryFilter,
+                limit: limitNum,
+                page: pageNum
+            });
+        }
         res.json(products);
     }
     catch (error) {
@@ -82,7 +97,6 @@ export const createProduct = async (req, res) => {
             res.status(400).json({ error: 'title, description, category_id, image, and price are required fields' });
             return;
         }
-        console.log(1);
         // Check if the category exists
         const myCategory = await Category.getOne(category_id);
         if (!myCategory) {
@@ -92,7 +106,6 @@ export const createProduct = async (req, res) => {
         if (!image.startsWith("data:image")) {
             image = base64Prefix + image;
         }
-        console.log(3);
         // Upload image to Cloudinary
         uploadedImage = await cloudinary.uploader.upload(image, {
             folder: "products", // Organize images in a Cloudinary folder
@@ -100,7 +113,6 @@ export const createProduct = async (req, res) => {
             unique_filename: true,
             overwrite: true,
         });
-        console.log(4);
         // Save product to database with Cloudinary image URL
         const newProduct = await Product.create({
             title,
@@ -117,7 +129,6 @@ export const createProduct = async (req, res) => {
     }
     catch (error) {
         // console.error("Error creating product:", error);
-        console.log(uploadedImage);
         res.status(500).json({ error: "Internal server error" });
     }
 };
@@ -167,25 +178,37 @@ export const updateProduct = async (req, res) => {
 };
 export const deleteProduct = async (req, res) => {
     try {
-        const productImage = (await Product.getOne(req.params.id)).image;
-        if (!productImage)
-            throw new Error("error in product controller image is undefined");
-        // console.log(path.join(IMAGES_FOLDER_PATH, productImage))
-        if (productImage) {
-            // Extract public ID from the full Cloudinary URL
+        const product = await Product.getOne(req.params.id);
+        if (!product) {
+            res.status(404).json({ error: "Product not found" });
+            return;
+        }
+        const productImage = product.image;
+        if (!productImage) {
+            console.warn("Warning: Product image is undefined, skipping Cloudinary deletion.");
+        }
+        else {
+            // Extraction du public ID de l'image Cloudinary
             const urlParts = productImage.split("/");
-            const filenameWithExtension = urlParts.pop(); // Get last part: "vsv1uhtye0ntmv4rhrve.jpg"
-            const publicId = filenameWithExtension?.split(".")[0]; // Remove file extension
+            const filenameWithExtension = urlParts.pop(); // Exemple: "vsv1uhtye0ntmv4rhrve.jpg"
+            const publicId = filenameWithExtension?.split(".")[0]; // Supprime l'extension
             if (publicId) {
-                await cloudinary.uploader.destroy(`products/${publicId}`);
-                console.log(`Cloudinary image deleted: products/${publicId}`);
+                const cloudinaryPublicId = `products/${publicId}`;
+                console.log("Deleting Cloudinary image:", cloudinaryPublicId);
+                // Supprimer l'image de Cloudinary
+                const result = await cloudinary.uploader.destroy(cloudinaryPublicId);
+                console.log("Cloudinary Response:", result);
+                if (result.result !== "ok") {
+                    console.warn(`Cloudinary deletion issue: ${JSON.stringify(result)}`);
+                }
             }
         }
-        const product = await Product.delete(req.params.id);
-        res.json({ msg: "product with id " + req.params.id + " has deleted successfuly" });
+        // Suppression du produit dans la base de données
+        await Product.delete(req.params.id);
+        res.json({ msg: `Product with id ${req.params.id} has been deleted successfully` });
     }
     catch (error) {
-        console.error("error deleting product: " + error);
-        res.status(500).json({ error: "error deleting product" });
+        console.error("Error deleting product:", error);
+        res.status(500).json({ error: "Error deleting product" });
     }
 };

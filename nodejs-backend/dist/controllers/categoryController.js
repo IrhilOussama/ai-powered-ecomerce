@@ -1,7 +1,8 @@
 import Category from '../models/Category.js';
+import cloudinary from '../config/cloudinary.js';
 export const getAllCategories = async (req, res) => {
     try {
-        const categories = await Category.getAll();
+        const categories = await Category.getCategoriesWithProductCount();
         res.json(categories);
     }
     catch (error) {
@@ -27,29 +28,40 @@ export const getCategory = async (req, res) => {
 };
 export const createCategory = async (req, res) => {
     try {
-        const { title, description } = req.body;
+        let { title, description } = req.body;
         if (!title) {
             res.status(400).json({ error: 'Title is required' });
             return;
         }
-        const newCategory = await Category.create({ title, description });
+        const newCategory = await Category.create({ title, description, image: req.cloudinaryImage ? req.cloudinaryImage.secure_url : '' });
         res.status(201).json({ message: 'Category created successfully', category: newCategory });
     }
     catch (error) {
-        console.error('Error creating category:', error);
-        res.status(500).json({ error: 'Failed to create category' });
+        console.error("Error creating category:", error);
+        res.status(500).json({ error: "Failed to create category" });
     }
 };
 export const updateCategory = async (req, res) => {
     try {
         const id = req.params.id;
-        const { title, description } = req.body;
+        let { title, description } = req.body;
         if (!title) {
             res.status(400).json({ error: 'Title is required' });
             return;
         }
-        const updatedCategory = await Category.update({ id, title, description });
-        res.status(201).json({ message: 'Category updated successfully', category: updatedCategory });
+        let result;
+        if (req.cloudinaryImage) {
+            // delete old categorie image from cloudinary if it is not null
+            const oldImageUrl = (await Category.getOne(id)).image;
+            if (oldImageUrl && oldImageUrl !== 'null' && oldImageUrl !== '') {
+                await cloudinary.uploader.destroy(oldImageUrl);
+            }
+            result = await Category.update({ id, title, description, image: req.cloudinaryImage.secure_url });
+        }
+        else {
+            result = await Category.update({ id, title, description, image: '' });
+        }
+        res.status(201).json({ message: 'Category updated successfully', category: result });
     }
     catch (error) {
         console.error('Error updating category:', error);

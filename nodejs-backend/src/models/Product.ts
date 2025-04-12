@@ -20,12 +20,13 @@ export interface user_product_recommandation {
 
 
 class Product {
+    
     static async getAll(){
-        const result = (await db.query('SELECT p.id, p.title, p.categorie_id, p.description, price, image, value, c.title AS category_title FROM product AS p, categorie as c WHERE p.categorie_id = c.id'));
+        const result = (await db.query('SELECT p.id, p.title, p.categorie_id, p.description, price, p.image, value, c.title AS category_title FROM product AS p, categorie as c WHERE p.categorie_id = c.id'));
         return result.rows;
     }
     static async getOne(id: string): Promise<MyProduct> {
-        const result = (await db.query("SELECT p.id, p.title, p.categorie_id, p.description, price, image, value, c.title AS category_title " +
+        const result = (await db.query("SELECT p.id, p.title, p.categorie_id, p.description, price, p.image, value, c.title AS category_title " +
             "FROM product AS p, categorie as c WHERE (p.categorie_id = c.id) AND (p.id = $1)", [id]));
         return result.rows[0];
     }
@@ -90,6 +91,39 @@ class Product {
         const result = (await db.query("SELECT * FROM recommanded_products WHERE user_id = $1", [user_id]));
         // console.log(result.rows);
         return result.rows;
+    }
+
+    static async getFiltered(options: {
+        category?: number, 
+        limit?: number, 
+        page?: number
+    } = {}): Promise<any[]> {
+        try {
+            const { 
+                category, 
+                limit = 10, 
+                page = 1 
+            } = options;
+            let query = `
+                SELECT p.* FROM product p WHERE p.categorie_id = $1 
+            `; 
+
+            const queryParams: any[] = [];
+
+            // Add pagination and limit
+            query += ` LIMIT $2 OFFSET $3`;
+            queryParams.push(
+                category,
+                limit, 
+                (page - 1) * limit
+            );
+
+            const result = await db.query(query, queryParams);
+            return result.rows;
+        } catch (error) {
+            console.error('Error filtering products:', error);
+            throw error;
+        }
     }
 }
 
