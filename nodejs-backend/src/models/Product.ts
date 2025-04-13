@@ -37,7 +37,7 @@ class Product {
     }
     static async getOneByImageFilename(filename: string): Promise<MyProduct> {
         const result = await db.query(
-            `SELECT p.id, p.title, p.categorie_id, p.description, price, image, value, c.title AS category_title 
+            `SELECT p.id, p.title, p.categorie_id, p.description, price, p.image, value, c.title AS category_title 
              FROM product AS p
              JOIN categorie AS c ON p.categorie_id = c.id
              WHERE SPLIT_PART(SPLIT_PART(p.image, '/', array_length(string_to_array(p.image, '/'), 1)), '.', 1) = $1`, 

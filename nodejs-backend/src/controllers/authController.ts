@@ -8,6 +8,7 @@ export const handleGoogleRoute = passport.authenticate('google', { scope: ['prof
 export const handleGoogleAuthRoute = async  (req: Request, res: Response, next: NextFunction) => {
     // Use passport to handle the callback. We disable sessions.
     passport.authenticate('google', { session: false }, (err, user, info) => {
+        console.log(3232)
         if (err || !user) {
             // Redirect to a login page on the frontend with an error message.
             const errorMessage = err ? err.message : 'Authentication Failed';
