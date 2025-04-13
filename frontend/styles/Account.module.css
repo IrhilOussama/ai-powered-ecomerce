@@ -1,0 +1,80 @@
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.profileSection {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  background-color: #0070f3;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.userInfo {
+  flex: 1;
+}
+
+.userName {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.userEmail {
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+
+.userId {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.actions {
+  border-top: 1px solid #eee;
+  padding-top: 1.5rem;
+}
+
+.logoutButton, .editButton {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #0070f3;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+.logoutButton{
+  margin-left: 20px;
+  background-color: #f33d00;
+}
+
+.editButton:hover {
+  background-color: #0051a2;
+}
+.logoutButton:hover {
+  background-color: #761403;
+}
