@@ -8,10 +8,12 @@ export const handleGoogleAuthRoute = async (req, res, next) => {
         if (err || !user) {
             // Redirect to a login page on the frontend with an error message.
             const errorMessage = err ? err.message : 'Authentication Failed';
+            console.log("abc");
             return res.redirect(`${process.env.FRONTEND_URL}/account?error=${encodeURIComponent(errorMessage)}`);
         }
         // Generate a JWT token for the authenticated user.
         const token = generateToken(user.id);
+        console.log("xyz");
         // Redirect the user back to the frontend, passing the token as a query parameter.
         return res.redirect(`${process.env.FRONTEND_URL}/api/auth/callback?token=${token}`);
     })(req, res, next);
