@@ -1,6 +1,8 @@
 import User, { MyUser } from '../models/User.js';
+import bcrypt from "bcrypt";
 import { Request, Response } from 'express';
 import { loginUser, registerUser } from '../services/AuthService.js';
+import myDBPool from '../config/database.js';
 
 export const getAllUsers = async (req: Request, res: Response) => {
     try{
@@ -81,6 +83,41 @@ export const authenticateUser = async (req: Request, res: Response) => {
 }
 
 export const getCurrentUser = async (req: Request, res: Response) => {
-    console.log(1);
     res.json({user: (req as any).user});
 }
+
+export const changePassword = async (req: Request, res: Response) => {
+    const userId = req.user ? (req.user as any).userId : null; // from auth middleware
+    const { currentPassword, newPassword } = req.body;
+    try {
+        // 1. Get the user from DB
+        console.log(req.body)
+        const result = await myDBPool.query('SELECT password FROM profile WHERE id = $1', [userId]);
+        const user = result.rows[0];
+        if (!user){
+            res.status(404).json({ message: 'User not found' });
+            return
+        }
+        if (!currentPassword || !newPassword) {
+            res.status(404).json({ message: 'currentPassword and newPassword are not provided' });
+            return;
+        }
+        // 2. Compare current password
+        const valid = await bcrypt.compare(currentPassword, user.password);
+        if (!valid)  {
+        res.status(400).json({ message: 'Incorrect current password' });
+        return
+        }
+
+        // 3. Hash new password
+        const hashed = await bcrypt.hash(newPassword, 10);
+
+        // 4. Update password in DB
+        await myDBPool.query('UPDATE profile SET password = $1 WHERE id = $2', [hashed, userId]);
+
+        res.status(200).json({ message: 'Password updated successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Something went wrong' });
+    }
+};

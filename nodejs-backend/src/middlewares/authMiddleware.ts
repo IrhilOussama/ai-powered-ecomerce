@@ -8,7 +8,7 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
         return;
     }
     try {
-        const decoded = verifyToken(token as string);
+        const decoded = verifyToken(token as string); // { userId: '44', iat: 1744655364, exp: 1744676964 }
         (req as any).user = decoded; // Attach user data to the request object
         next();
     } catch (error) {
