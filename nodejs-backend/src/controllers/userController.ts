@@ -3,6 +3,9 @@ import bcrypt from "bcrypt";
 import { Request, Response } from 'express';
 import { loginUser, registerUser } from '../services/AuthService.js';
 import myDBPool from '../config/database.js';
+import jwt from 'jsonwebtoken';
+import { sendEmailVerification } from '../utils/sendResetEmail.js';
+const JWT_SECRET = process.env.JWT_SECRET || "secret-key";
 
 export const getAllUsers = async (req: Request, res: Response) => {
     try{
@@ -45,13 +48,13 @@ export const createUser = async (req: Request, res: Response) => {
 
 export const updateUser = async (req: Request, res: Response) => {
     try{
-        const {username, email, password} = req.body;
+        const {username} = req.body;
         const id = req.params.id;
-        if (!username || !email || !password){
-            res.status(400).json({error: "username, email and password are required"})
+        if (!username){
+            res.status(400).json({error: "username are required"})
         }
         else {
-            const user = await User.update({id, username, email, password});
+            const user = await User.update({id, username});
             res.status(200).json({msg: "user updated successfuly", user})
 
         }
@@ -119,5 +122,55 @@ export const changePassword = async (req: Request, res: Response) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Something went wrong' });
+    }
+};
+
+export const requestEmailChange = async (req: Request, res: Response) => {
+    const userId = (req as any).user.userId; // from auth middleware
+    const { newEmail } = req.body;
+
+    try {
+
+        if (!newEmail){
+            res.status(400).json({message: "no email provided"});
+            return;
+        }
+        // Optional: Check if newEmail is already in use
+        const existing = await User.findUserByEmail(newEmail);
+        if (existing) {
+            res.status(400).json({ message: "Email already in use" });
+            return;
+        }
+
+        const token = jwt.sign({ userId, newEmail }, JWT_SECRET, { expiresIn: "15m" });
+        const verifyLink = `${process.env.FRONTEND_URL}/account/verify-new-email?token=${token}`;
+
+        await sendEmailVerification(newEmail, verifyLink);
+
+        res.status(200).json({ message: "Verification link sent to new email" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Server error" });
+    }
+};
+
+export const confirmEmailChange = async (req: Request, res: Response) => {
+    const { token } = req.body;
+    try {
+        const decoded = jwt.verify(token, JWT_SECRET) as { userId: string; newEmail: string };
+
+        const user = await User.getOne(decoded.userId);
+        if (!user) {
+            res.status(404).json({ message: "User not found" });
+            return
+        }
+
+        if (!user.id) return
+        await User.updateEmail(user.id, decoded.newEmail);
+
+        res.status(200).json({ message: "Email updated successfully" });
+    } catch (err) {
+        console.error(err);
+        res.status(400).json({ message: "Invalid or expired token" });
     }
 };

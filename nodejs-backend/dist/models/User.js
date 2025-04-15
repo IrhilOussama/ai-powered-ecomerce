@@ -6,8 +6,12 @@ class User {
         return result.rows;
     }
     static async getOne(id) {
-        const result = await db.query("SELECT id, username, email FROM profile WHERE id = $1", [id]);
-        return result.rows[0];
+        const result = (await db.query("SELECT p.id, username, email, purchases_number, favorite_category, created_at as register_date FROM profile p WHERE p.id = $1", [id])).rows[0];
+        if (result.favorite_category != null) {
+            result.favorite_category_title = (await db.query("SELECT title FROM categorie WHERE id = $1", [result['favorite_category']])).rows[0];
+        }
+        result.register_date = result.register_date.toString().split(" ").slice(1, 4).join(" ");
+        return result;
     }
     static async create(data) {
         const hashedPassword = await bcrypt.hash(data.password, 10);
@@ -15,7 +19,15 @@ class User {
         return result.rows[0];
     }
     static async update(data) {
-        const result = await db.query("UPDATE profile SET username = $1, email = $2, password = $3 WHERE id = $4 RETURNING *", [data.username, data.email, data.password, data.id]);
+        const result = await db.query("UPDATE profile SET username = $1 WHERE id = $2 RETURNING *", [data.username, data.id]);
+        return result.rows[0];
+    }
+    static async updateEmail(id, email) {
+        const result = await db.query("UPDATE profile SET email = $1 WHERE id = $2 RETURNING *", [email, id]);
+        return result.rows[0];
+    }
+    static async updatePassword(id, password) {
+        const result = await db.query("UPDATE profile SET password = $1 WHERE id = $2 RETURNING *", [password, id]);
         return result.rows[0];
     }
     static async delete(id) {
