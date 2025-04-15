@@ -22,7 +22,7 @@ export default function AboutPage() {
       bio: "Computer science student with a passion for technology, development, and problem-solving. I enjoy creating digital solutions and exploring new innovations in the tech world."
     },
     {
-      name: "Sarah Chen",
+      name: "Moad Fayd",
       role: "MARKETING MANAGER, Founder & CEO",
       image: "/images/moad.jpg",
       bio: "Marketing student who loves creativity, communication, and understanding consumer behavior. They are interested in branding, advertising, and digital media strategies."
