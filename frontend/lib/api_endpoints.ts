@@ -1,7 +1,4 @@
-const HOSTNAME = "https://ai-powered-website-backend.onrender.com/api";
-// const HOSTNAME = "http://localhost:5000/api"
-
-// const HOSTNAME = process.env.NEXT_PUBLIC_API_URL;
+const HOSTNAME = process.env.NEXT_PUBLIC_API_URL;
 
 
 export const API_ENDPOINTS = {
@@ -21,7 +18,8 @@ export const API_ENDPOINTS = {
       REGISTER: HOSTNAME+"/users/register",
     },
     USER: {
-      PROFILE: HOSTNAME+"/users/profile",
-      ORDERS: HOSTNAME+"/users/orders",
+      BASE: HOSTNAME+"/users",
+      // LOGIN: HOSTNAME+"/users/profile",
+      // ORDERS: HOSTNAME+"/users/orders",
     },
   };

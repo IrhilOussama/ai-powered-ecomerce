@@ -55,14 +55,14 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="flex flex-col items-center bg-gray-50">
-      {/* Hero Section - Modern Gradient Overlay */}
+    <main className="flex flex-col items-center bg-background dark:bg-gray-900">
+      {/* Hero Section with Dark Mode Overlay */}
       <div className="relative w-full h-[70vh] max-h-[800px]">
         <Image
           src="/images/landing.jpg"
           alt="E-commerce Hero"
           fill
-          className="object-cover"
+          className="object-cover dark:brightness-75"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
@@ -71,18 +71,18 @@ export default function HomePage() {
           <p className="text-xl mb-6">Premium quality products for your everyday life</p>
           <Link 
             href="/products" 
-            className="inline-block bg-white text-black font-medium px-8 py-3 rounded-full hover:bg-gray-100 transition-colors"
+            className="inline-block bg-white text-black font-medium px-8 py-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-200 transition-colors"
           >
             Shop Now
           </Link>
         </div>
       </div>
 
-      {/* Categories Section - Card Style */}
+      {/* Categories Section with Dark Cards */}
       <section className="w-full max-w-7xl px-6 py-16">
         <div className="flex justify-between items-center mb-10">
-          <h2 className="text-3xl font-bold">Shop by Category</h2>
-          <Link href="/categories" className="text-primary hover:underline">
+          <h2 className="text-3xl font-bold text-foreground dark:text-white">Shop by Category</h2>
+          <Link href="/categories" className="text-primary hover:underline dark:text-primary-400">
             View All
           </Link>
         </div>
@@ -90,7 +90,7 @@ export default function HomePage() {
           {categories.map((category) => (
             <div
               key={category.id}
-              className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 dark:border dark:border-gray-700"
             >
               <div className="relative h-80">
                 <Image
@@ -116,11 +116,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Popular Products Section - Modern Card Grid */}
-      <section className="w-full max-w-7xl px-6 py-16 bg-white">
+      {/* Popular Products Section with Dark Mode Cards */}
+      <section className="w-full max-w-7xl px-6 py-16 bg-card dark:bg-gray-800">
         <div className="flex justify-between items-center mb-10">
-          <h2 className="text-3xl font-bold">Trending Products</h2>
-          <Link href="/products" className="text-primary hover:underline">
+          <h2 className="text-3xl font-bold text-foreground dark:text-white">Trending Products</h2>
+          <Link href="/products" className="text-primary hover:underline dark:text-primary-400">
             View All
           </Link>
         </div>
@@ -128,7 +128,7 @@ export default function HomePage() {
           {products.map((product) => (
             <div
               key={product.id}
-              className="group relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
+              className="group relative bg-card dark:bg-gray-850 rounded-xl overflow-hidden shadow-md hover:shadow-lg dark:hover:shadow-xl transition-all duration-300 border dark:border-gray-700"
             >
               <div className="relative aspect-square">
                 <Image
@@ -140,16 +140,16 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent"></div>
               </div>
               <div className="p-6">
-                <span className="text-sm text-gray-500">{product.category_title}</span>
-                <h3 className="text-xl font-semibold mt-1 mb-2 group-hover:text-primary transition-colors">
+                <span className="text-sm text-muted-foreground dark:text-gray-400">{product.category_title}</span>
+                <h3 className="text-xl font-semibold mt-1 mb-2 text-foreground dark:text-white group-hover:text-primary dark:group-hover:text-primary-400 transition-colors">
                   {product.title}
                 </h3>
-                <p className="text-gray-600 line-clamp-2 mb-4">{product.description}</p>
+                <p className="text-muted-foreground dark:text-gray-300 line-clamp-2 mb-4">{product.description}</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-xl font-bold text-gray-900">${product.price}</span>
+                  <span className="text-xl font-bold text-foreground dark:text-white">${product.price}</span>
                   <Link
                     href={`/products/${product.id}`}
-                    className="text-sm font-medium px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+                    className="text-sm font-medium px-4 py-2 bg-accent hover:bg-accent-hover dark:bg-primary dark:hover:bg-primary-600 text-white rounded-full transition-colors"
                   >
                     View Details
                   </Link>
@@ -160,8 +160,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="w-full py-20 bg-gradient-to-r from-primary to-secondary">
+      {/* CTA Section with Consistent Brand Colors */}
+      <section className="w-full py-20 bg-gradient-to-r from-primary to-secondary dark:from-primary-600 dark:to-secondary-600">
         <div className="max-w-4xl mx-auto text-center text-white px-6">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Shopping Experience?</h2>
           <p className="text-xl mb-8 opacity-90">Join thousands of satisfied customers today</p>

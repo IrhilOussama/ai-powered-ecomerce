@@ -65,12 +65,12 @@ export default function Log_In_Page({setLogin}) {
         </form>
         <button className={styles.googleButton} onClick={handleGoogleClick}>
         <Image
-          src="/google-logo.svg"
-          alt="Google Logo"
-          width={24} // Replace with the appropriate width
-          height={24} // Replace with the appropriate height
-          className={styles.icon}
-        />
+        src="/google-logo.svg"
+        alt="Google Logo"
+        width={24} // Replace with the appropriate width
+        height={24} // Replace with the appropriate height
+        className={styles.icon}
+      />
           Sign in with Google
         </button>
         </div>

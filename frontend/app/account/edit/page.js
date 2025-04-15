@@ -2,6 +2,7 @@
 import React from "react";
 import { useAuth } from "@/context/AuthContext";
 import EditAccountPage from "@/components/accountEdit";
+import Log_In_Page from "@/components/log_in";
 
 
 export default function Account() {
@@ -14,7 +15,7 @@ export default function Account() {
       {user? (
         <EditAccountPage/>
       ): (
-        <EditAccountPage/>
+        <Log_In_Page/>
       )}
     </>
   )

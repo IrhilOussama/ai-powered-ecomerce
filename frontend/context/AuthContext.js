@@ -15,7 +15,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log(1)
 
   const refreshUser = async () => {
     try {
@@ -42,10 +41,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log(2)
     const initializeAuth = async () => {
       try {
-        console.log(3)
         const token = localStorage.getItem('token');
         if (token) {
           await refreshUser();
@@ -53,7 +50,6 @@ export const AuthProvider = ({ children }) => {
       } catch (err) {
         setError(err.message);
       } finally {
-        console.log("fin")
         setIsLoading(false);
       }
     };
