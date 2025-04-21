@@ -57,13 +57,13 @@ export function Navbar() {
       transition={{ duration: 0.5 }}
       className={cn(
         "sticky top-0 z-50 flex items-center justify-between p-4 border-b backdrop-blur-sm transition-all duration-300",
-        isScrolled ? "bg-background/90 shadow-sm" : "bg-background"
+        isScrolled ? "bg-yellow-50/90 shadow-sm" : "bg-yellow-200"
       )}
     >
       {/* Logo with hover effect */}
       <motion.div whileHover={{ scale: 1.05 }}>
-        <Link href="/" className="font-bold text-2xl bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-          Dyano
+        <Link href="/" className="font-bold text-2xl bg-gradient-to-r from-yellow-500 to-purple-600 bg-clip-text text-transparent">
+          SO9LIK
         </Link>
       </motion.div>
 
@@ -155,7 +155,7 @@ export function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
                 >
-                  Dyano
+                  So9Lik
                 </Link>
               </motion.div>
 
@@ -208,7 +208,7 @@ export function Navbar() {
                 className="p-4 border-t"
               >
                 <p className="text-xs text-muted-foreground">
-                  © {new Date().getFullYear()} Dyano. All rights reserved.
+                  © {new Date().getFullYear()} So9Lik. All rights reserved.
                 </p>
               </motion.div>
             </div>

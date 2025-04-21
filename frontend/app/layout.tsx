@@ -17,9 +17,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DYANOO",
-  description: "DYANOO is your trusted online store in Casablanca, Morocco. Shop trendy and affordable fashion, accessories, and more — order directly via WhatsApp for a fast and easy shopping experience.",
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+    other: {
+      rel: 'icon',
+      url: '/icon-192x192.png',
+    },
+  },
+  openGraph: {
+    title: 'So9Lik - Discover Premium Products',
+    description: 'Find the best quality products for your everyday life. Shop our exclusive collection today.',
+    url: 'https://so9lik.vercel.app',
+    siteName: 'SO9LIK',
+    images: [
+      {
+        url: 'https://so9lik.vercel.app/images/so9lik.jpg', // Full URL to your share image
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  title: "SO9LIK",
+  description: "SO9LIK is your trusted online store in Casablanca, Morocco. Shop trendy and affordable fashion, accessories, and more — order directly via WhatsApp for a fast and easy shopping experience.",
 };
+
 
 export default function RootLayout({
   children,

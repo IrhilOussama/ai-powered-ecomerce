@@ -57,24 +57,64 @@ export default function HomePage() {
   return (
     <main className="flex flex-col items-center bg-background dark:bg-gray-900">
       {/* Hero Section with Dark Mode Overlay */}
-      <div className="relative w-full h-[70vh] max-h-[800px]">
-        <Image
-          src="/images/landing.jpg"
-          alt="E-commerce Hero"
-          fill
-          className="object-cover dark:brightness-75"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
-        <div className="absolute bottom-10 left-10 text-white max-w-2xl">
-          <h1 className="text-5xl font-bold mb-4">Discover Your Style</h1>
-          <p className="text-xl mb-6">Premium quality products for your everyday life</p>
-          <Link 
-            href="/products" 
-            className="inline-block bg-white text-black font-medium px-8 py-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-200 transition-colors"
-          >
-            Shop Now
-          </Link>
+      <div className="relative w-full h-[90vh] max-h-[800px] min-h-[500px]">
+        {/* Background image container */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          {/* Blurred full background image for md+ */}
+          <div className="hidden md:block absolute inset-0 z-10">
+            <Image
+              src="/images/so9lik.jpg"
+              alt="Background"
+              fill
+              className="object-cover blur-sm dark:brightness-75"
+              priority
+            />
+          </div>
+
+          {/* Mobile version: fills screen without blur */}
+          <div className="md:hidden absolute inset-0 z-10">
+            <Image
+              src="/images/so9lik.jpg"
+              alt="Mobile Hero"
+              fill
+              className="object-cover dark:brightness-75"
+              priority
+            />
+          </div>
+        </div>
+
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-15"></div>
+
+        {/* Content container */}
+        <div className="relative z-30 h-full flex flex-col justify-end pb-20 md:pb-32 px-6 md:px-12 lg:px-24">
+          <div className="max-w-2xl">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-white leading-tight">
+              Discover Your Unique Style
+            </h1>
+            <p className="text-lg md:text-xl mb-8 text-gray-100">
+              Premium quality products crafted for your everyday life
+            </p>
+            <Link 
+              href="/products" 
+              className="inline-block bg-white text-gray-900 font-medium px-8 py-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-200 transition-colors duration-300 transform hover:scale-105"
+            >
+              Shop Collection
+            </Link>
+          </div>
+        </div>
+
+        {/* Clear image on the right (for md and up) - positioned absolutely */}
+        <div className="hidden md:block absolute right-10 bottom-20 z-20 h-[80%] aspect-[2/3]">
+          <div className="relative h-full w-full rounded-lg shadow-2xl overflow-hidden border-4 border-white/20">
+            <Image
+              src="/images/so9lik.jpg"
+              alt="Featured Product"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
       </div>
 
@@ -149,7 +189,7 @@ export default function HomePage() {
                   <span className="text-xl font-bold text-foreground dark:text-white">${product.price}</span>
                   <Link
                     href={`/products/${product.id}`}
-                    className="text-sm font-medium px-4 py-2 bg-accent hover:bg-accent-hover dark:bg-primary dark:hover:bg-primary-600 text-white rounded-full transition-colors"
+                    className="text-sm font-medium px-4 py-2 bg-gray-500 hover:bg-accent-hover dark:bg-primary dark:hover:bg-primary-600 text-white rounded-full transition-colors"
                   >
                     View Details
                   </Link>
