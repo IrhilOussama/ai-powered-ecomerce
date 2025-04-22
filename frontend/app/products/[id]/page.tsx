@@ -9,6 +9,7 @@ import Link from "next/link";
 import { ErrorState } from "@/components/errorState";
 import { LoadingSkeleton } from "@/components/loadingSkeleton";
 import { motion } from "framer-motion";
+import { MessageCircle } from 'lucide-react';
 
 interface Product {
   id: string;
@@ -76,6 +77,8 @@ export default function ProductDetailPage() {
 
         {/* Product Details - Mobile Optimized */}
         <div className="order-2 sm:order-none">
+
+        {/* Product Details - Mobile Optimized */}
           <motion.div
             initial={{ x: 50 }}
             animate={{ x: 0 }}
@@ -91,13 +94,23 @@ export default function ProductDetailPage() {
               {product.description}
             </p>
 
-            <motion.button
+            <motion.a
+              href={`https://wa.me/212703493979?text=${encodeURIComponent(
+                `Hello! I would like to order:\n\n` +
+                `Product: ${product.title}\n` +
+                `ID: ${product.id}\n` +
+                `Price: $${product.price}\n\n` +
+                `Please let me know about availability.`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full bg-gray-900 text-white py-3 md:py-4 rounded-lg sm:rounded-xl text-base sm:text-lg font-medium hover:bg-gray-800 transition-colors"
+              className="flex items-center justify-center gap-2 w-full bg-[#25D366] text-white py-3 md:py-4 rounded-lg sm:rounded-xl text-base sm:text-lg font-medium hover:bg-[#128C7E] transition-colors"
             >
-              Add to Cart
-            </motion.button>
+              <MessageCircle className="w-5 h-5" />
+              Order via WhatsApp
+            </motion.a>
           </motion.div>
 
           {/* Similar Products - Mobile Optimized */}

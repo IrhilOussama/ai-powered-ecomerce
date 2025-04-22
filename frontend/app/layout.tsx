@@ -26,6 +26,12 @@ export const metadata: Metadata = {
       url: '/icon-192x192.png',
     },
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'So9Lik - Discover Premium Products',
+    description: 'Find the best quality products for your everyday life. Shop our exclusive collection today.',
+    images: ['https://so9lik.vercel.app/images/so9lik.jpg'],
+  },
   openGraph: {
     title: 'So9Lik - Discover Premium Products',
     description: 'Find the best quality products for your everyday life. Shop our exclusive collection today.',

@@ -57,7 +57,7 @@ export function Navbar() {
       transition={{ duration: 0.5 }}
       className={cn(
         "sticky top-0 z-50 flex items-center justify-between p-4 border-b backdrop-blur-sm transition-all duration-300",
-        isScrolled ? "bg-yellow-50/90 shadow-sm" : "bg-yellow-200"
+        isScrolled ? "bg-white/90 shadow-sm" : "bg-white"
       )}
     >
       {/* Logo with hover effect */}
