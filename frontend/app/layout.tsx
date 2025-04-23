@@ -5,6 +5,8 @@ import { Navbar } from "@/components/navbar";
 import { AuthProvider } from "@/context/AuthContext";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "next-themes";
+import Head from 'next/head';
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -59,6 +61,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <Head>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
