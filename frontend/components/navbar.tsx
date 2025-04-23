@@ -58,12 +58,12 @@ export function Navbar() {
       className={cn(
         "sticky top-0 z-50 flex items-center justify-between p-4 border-b backdrop-blur-sm transition-all duration-300",
         isScrolled ? "bg-white/90 shadow-sm" : "bg-white"
-      )}S
+      )}
     >
       {/* Logo with hover effect */}
       <motion.div whileHover={{ scale: 1.05 }}>
         <Link href="/" className="font-bold text-2xl bg-gradient-to-r from-yellow-500 to-purple-600 bg-clip-text text-transparent">
-          So9Lik
+          So9 Lik
         </Link>
       </motion.div>
 
