@@ -90,10 +90,10 @@ export default function HomePage() {
         <div className="relative z-30 h-full flex flex-col justify-end pb-20 md:pb-32 px-6 md:px-12 lg:px-24">
           <div className="max-w-2xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-white leading-tight">
-              Discover Your Unique Style
+              Discover Your Unique Style In SO9 LIK
             </h1>
             <p className="text-lg md:text-xl mb-8 text-gray-100">
-              Premium quality products crafted for your everyday life
+              SO9 LIK offers Premium quality products crafted for your everyday life
             </p>
             <Link 
               href="/products" 

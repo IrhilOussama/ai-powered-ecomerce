@@ -31,12 +31,12 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'So9Lik - Discover Premium Products',
-    description: 'Find the best quality products for your everyday life. Shop our exclusive collection today.',
+    description: 'Find the best quality products for your everyday life here in So9 Lik. Shop our exclusive collection today.',
     images: ['https://so9lik.vercel.app/images/so9lik.jpg'],
   },
   openGraph: {
     title: 'So9Lik - Discover Premium Products',
-    description: 'Find the best quality products for your everyday life. Shop our exclusive collection today.',
+    description: 'Find the best quality products for your everyday life . visite So9 Lik and Shop our exclusive collection today.',
     url: 'https://so9lik.vercel.app',
     siteName: 'SO9LIK',
     images: [
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     type: 'website',
   },
   title: "SO9LIK",
-  description: "SO9LIK is your trusted online store in Casablanca, Morocco. Shop trendy and affordable fashion, accessories, and more — order directly via WhatsApp for a fast and easy shopping experience.",
+  description: "SO9LIK is your trusted online store in Casablanca, Morocco. So9 Lik shop trendy and affordable fashion, accessories, and more — order directly via WhatsApp for a fast and easy shopping experience.",
 };
 
 
